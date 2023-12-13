@@ -1,0 +1,24 @@
+.product-card {
+  @apply w-72 h-96;
+
+  .img-content {
+    width: 100%;
+    height: 280px !important;
+    position: relative;
+
+    .img {
+      object-fit: cover;
+      width: 100%;
+      height: 280px !important;
+    }
+    .hoverBasket {
+      @apply w-full h-full bg-[#2335418f] absolute hidden  top-0 flex justify-center items-center text-xl;
+      z-index: 99;
+    }
+    &:hover {
+      .hoverBasket {
+        display: flex;
+      }
+    }
+  }
+}
