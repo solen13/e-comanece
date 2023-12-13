@@ -1,8 +1,12 @@
 <template>
   <div class="DefaultLayout w-full relative">
+  
     <header-app-header/>
-    <slot />
+    
+        <slot />
+    
     <footer-card/>
+
   </div>
 </template>
 
