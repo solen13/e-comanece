@@ -1,11 +1,11 @@
 <template>
   <div
     v-if="product"
-    class="flex justify-between items-center px-16 w-full h-[622px]"
+    class="slider"
   >
     <div class="w-1/2">
       <div>
-        <h1 class="text-darkGreen text-5xl font-bold text-left">
+        <h1 class="text-darkGreen text-3xl font-bold text-left">
           {{ product.title }}
         </h1>
         <p class="mt-7 text-gray-200 text-left">
@@ -21,8 +21,8 @@
         </button>
       </div>
     </div>
-    <div class="w-1/2 h-full">
-      <img class="object-contain w-full h-full" :src="product.image" />
+    <div class="img-content ">
+      <img  :src="product.image" />
     </div>
   </div>
 </template>
@@ -33,4 +33,4 @@ const props = defineProps({
 });
 </script>
 
-<style></style>
+<style lang="scss" src="./slider.scss"></style>

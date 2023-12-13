@@ -8,6 +8,7 @@
       <card-service-card  />
     
    <special-product/>
+   <serial-banner class="mt-10 mb-10"/>
   </div>
 </template>
 
