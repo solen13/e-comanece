@@ -13,35 +13,17 @@
           <div class="w-full">
             <h5>Müsteri servisi</h5>
             <ul>
-                <li>
-                    <nuxt-link>KVKK</nuxt-link>
+                <li v-for="item in customerService" :key="item.name">
+                    <nuxt-link :to="item.link">{{ item.name }}</nuxt-link>
                 </li>
-                <li>
-                    <nuxt-link>Hakımzda</nuxt-link>
-                </li>
-                <li>
-                    <nuxt-link>İletişim</nuxt-link>
-                </li>
-                <li>
-                    <nuxt-link>Ürün İadesi</nuxt-link>
-                </li>
-            
-                <li>
-                    <nuxt-link>Site Haritası</nuxt-link>
-                </li>
+                
             </ul>
           </div>
           <div class="w-full">
             <h5>Extralar</h5>
             <ul>
-                <li>
-                    <nuxt-link>Marklar</nuxt-link>
-                </li>
-                <li>
-                    <nuxt-link>Hediye Çeki</nuxt-link>
-                </li>
-                <li>
-                    <nuxt-link>Kampanyalar</nuxt-link>
+                <li v-for="item in extra" :key="item.name">
+                    <nuxt-link :to="item.link">{{ item.name }}</nuxt-link>
                 </li>
               
             </ul>
@@ -49,38 +31,28 @@
           <div class="w-full">
             <h5>Hesabım</h5>
             <ul>
-                <li>
-                    <nuxt-link>Giriş yap</nuxt-link>
+                <li v-for="item in account" :key="item.name">
+                    <nuxt-link :to="item.link">{{ item.name }}</nuxt-link>
                 </li>
-                <li>
-                    <nuxt-link>Kayıt Ol</nuxt-link>
-                </li>
-                <li>
-                    <nuxt-link>Sepetim</nuxt-link>
-                </li>
-                <li>
-                    <nuxt-link>Hesabım</nuxt-link>
-                </li>
-                <li>
-                    <nuxt-link>Siparişler</nuxt-link>
-                </li>
-                <li>
-                    <nuxt-link>Bülten Aboneliği</nuxt-link>
-                </li>
+              
               
             </ul>
           </div>
           <div class="w-full" >
             <h5>İletişim</h5>
-            <ul class="">
+            <ul >
                 <li>
-                    <Icon name="fa-solid:align-center" size="20" />
-                  <span class="text-xs  2xl:text-lg ml-2">  İçerenköy Mah. Eskievler Sk.
-Çetin Ceylan Sitesi No:7 D:3 34752 Ataşehir/İstanbul</span>
+                   <Icon name="fa-solid:align-center" size="20" />
+                  <span class="text-xs  2xl:text-lg ml-2"> 
+                     İçerenköy Mah. Eskievler Sk.
+                    Çetin Ceylan Sitesi No:7 D:3 34752 Ataşehir/İstanbul
+                  </span>
                 </li>
                 <li>
-                    <Icon name="fa-solid:phone-alt" size="20" />
-                  <span class="text-xs 2xl:text-lg  ml-2">  0850 303 21 03 - 0216 456 31 34</span>
+                  <Icon name="fa-solid:phone-alt" size="20" />
+                  <span class="text-xs 2xl:text-lg  ml-2"> 
+                     0850 303 21 03 - 0216 456 31 34
+                    </span>
                 </li>
                 <li>
                     <Icon name="fa-solid:envelope" size="20" />
@@ -101,6 +73,74 @@
 </template>
 
 <script setup>
+
+import {ref} from "vue"
+
+const customerService=ref([
+    {
+        name:"KVKK",
+        link:""
+    },
+    {
+        name:"Hakımzda",
+        link:""
+    },
+    {
+        name:"İletişim",
+        link:""
+    },
+    {
+        name:"Ürün İadesi",
+        link:""
+    },
+    {
+        name:"Site Haritası",
+        link:""
+    },
+
+])
+const extra=ref([
+    {
+        name:"Marklar",
+        link:""
+    },
+    {
+        name:"Hediye Çeki",
+        link:""
+    },
+    {
+        name:"Kampanyalar",
+        link:""
+    },
+
+])
+
+const account=ref([
+   {
+        name:"Giriş yap",
+        link:""
+    },
+    {
+        name:"Kayıt Ol",
+        link:""
+    },
+    {
+        name:"Sepetim",
+        link:""
+    },
+    {
+        name:"Hesabım",
+        link:""
+    },
+    {
+        name:"Siparişler",
+        link:""
+    },
+    {
+        name:"Bülten Aboneliği",
+        link:""
+    }
+])
 
 </script>
 

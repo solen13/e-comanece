@@ -14,4 +14,37 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  components: [
+    {
+      path: '@/components',
+      pathPrefix: false,
+      extensions: ['vue'],
+      extendComponent(component) {
+        /**
+         
+        Remove 'Component' suffix for generated component names
+        e.g.
+        components/Xyz.component.vue
+        XyzComponent -> Xyz*/
+        component.pascalName = component.pascalName.replace('Component', '')
+        component.kebabName = component.kebabName.replace('component', '')
+        }
+    }
+    ],
+  hooks: {
+    'pages:extend'(routes) {
+      routes.push(
+        {
+          name: 'urunler',
+          path: '/urunler',
+          file: '@/pages/products/index.vue'
+        },
+        {
+          path: '/urunler/:detail',
+          file: '@/pages/products/detail.vue'
+        }
+      )
+    }
+  },
+  
 });

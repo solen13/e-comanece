@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="product"
-    class="slider"
+    class="slider-card"
   >
     <div class="w-1/2">
       <div>
@@ -33,4 +33,4 @@ const props = defineProps({
 });
 </script>
 
-<style lang="scss" src="./slider.scss"></style>
+<style lang="scss" src="./slider-card.scss"></style>

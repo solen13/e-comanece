@@ -27,7 +27,7 @@
       </button>
     </div>
   </div>
-  <header-user-nav-card
+  <user-nav-card
     v-if="false"
     class="absolute top-0 right-0 z-99 mt-16 mr-24"
   />
