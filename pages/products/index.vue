@@ -4,14 +4,15 @@
    
     <div class="container mx-auto">
         <order-panel />
-      <div class="flex justify-between mt-5">
+      <div class="flex justify-between mt-5 ">
         <category-filter-card
+       
           :category="categoryList"
           @filterCategory="filterCategory"
         />
 
-        <div class="flex flex-wrap w-9/12">
-          <div v-for="item in 5" :key="item">
+        <div class="flex flex-wrap 2xl:w-[80%] w-[75%]  gap-5 bg- justify-start">
+          <div v-for="item in 6" :key="item">
             <product-card />
           </div>
         </div>

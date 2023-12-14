@@ -1,0 +1,38 @@
+.register-card {
+  @apply bg-white-100 shadow-2xl mt-10 px-10 py-5;
+  width: 100%;
+
+  .input-style {
+    @apply bg-gray-300  rounded-md px-3 py-2 mt-2;
+  }
+  span {
+    @apply flex flex-col;
+  }
+  .account-control-text {
+    position: relative;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #818b9c;
+    padding: 20px;
+    margin: 0;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 20%;
+      height: 1px;
+      background-color: #e4e9ee;
+      top: 50%;
+
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      left: 22%;
+    }
+
+    &::after {
+      right: 22%;
+    }
+  }
+}

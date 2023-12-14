@@ -1,0 +1,12 @@
+.special-product {
+  @apply container mx-auto;
+  .head {
+    @apply flex flex-col justify-center  items-center mt-16;
+    h2 {
+      @apply text-3xl font-bold text-textBack;
+    }
+    p {
+      @apply text-gray-200 mt-2;
+    }
+  }
+}

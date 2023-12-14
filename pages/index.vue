@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <div class="2xl:w-3/4 mx-auto">
+    <div class="2xl:w-3/4 container mx-auto">
        <navigation-slider />
     </div>
     <service-card  />

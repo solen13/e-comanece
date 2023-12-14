@@ -1,0 +1,10 @@
+.product-order-total-card {
+  @apply border border-gray-100 rounded-lg px-5 py-5 bg-white-100;
+  width: 380px;
+  ul {
+    @apply border-y py-4 border-gray-100;
+    li {
+      @apply flex justify-between text-gray-200;
+    }
+  }
+}
