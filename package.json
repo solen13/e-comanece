@@ -22,9 +22,11 @@
         "vue-router": "^4.2.5"
     },
     "dependencies": {
-        "v-dropdown-menu": "^2.0.3",
+        "@vee-validate/rules": "^4.7.4",
+        "vee-validate": "^4.7.4",
         "postcss-scss": "^4.0.9",
         "sass": "^1.69.5",
+        "v-dropdown-menu": "^2.0.3",
         "vuejs-paginate": "^2.1.0"
     }
 }
