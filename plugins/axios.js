@@ -1,10 +1,16 @@
-import axios from "axios";
+import axios from "axios"
 
-export default defineNuxtPlugin(async () => {
+export default defineNuxtPlugin((NuxtApp) => {
+
+    axios.defaults.withCredentials = true;
     axios.defaults.baseURL = 'https://dummyjson.com/'
+
     return {
         provide: {
-            api: axios
+            axios: axios
         }
     }
+
 })
+
+

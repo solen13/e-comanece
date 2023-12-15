@@ -9,6 +9,7 @@
           type="email"
           placeholder="E-posta adresinizi giriniz"
           class="input-style"
+          v-model="emailText"
         />
       </span>
       <span class="flex flex-col mt-3">
@@ -17,6 +18,7 @@
           type="password"
           placeholder="Porolanızı giriniz"
           class="input-style"
+          v-model="passwordText"
         />
         <div class="flex justify-end">
           <nuxt-link class="text-green font-semibold" to="/"
@@ -26,7 +28,7 @@
       </span>
     </div>
     <div class="mt-7 flex flex-col justify-center items-center">
-      <button class="w-1/2 bg-darkGreen text-white-100 py-2 rounded-lg">
+      <button @click="loginBtn" class="w-1/2 bg-darkGreen text-white-100 py-2 rounded-lg">
         Giriş yap
       </button>
       <p class="account-control-text text-center">Hesabınız yokmu?</p>
@@ -40,6 +42,21 @@
 </template>
 
 <script setup>
+
+
+// const { $authStore, $generalStore, $axios } = useNuxtApp()
+// // const axios =useNuxtApp().$axios
+// const axios=$axios
+import {useAuthStore} from "@/stores/auth"
+ const authStore=useAuthStore()
+const emailText=ref("kminchelle")
+const passwordText=ref("0lelplR")
+const loginBtn=async()=>{
+
+    authStore.login(emailText.value,passwordText.value)
+    
+
+}
 </script>
 
 <style lang="scss" src="./login-card.scss">

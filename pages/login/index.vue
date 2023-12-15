@@ -19,11 +19,7 @@ const breadCrumbLink = ref([
     link: "/",
   },
 ]);
-onMounted(() => {
-  axios.get("products").then((res) => {
-    console.log(res);
-  });
-});
+
 </script>
 
 <style>
