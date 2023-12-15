@@ -1,0 +1,13 @@
+.profile-information-card {
+  @apply border  border-gray-100 rounded-xl px-10 py-10;
+  width: 70%;
+  .input-style {
+    @apply bg-gray-300  rounded-md px-3 py-2 mt-2;
+  }
+  span {
+    @apply flex flex-col;
+    label {
+      @apply font-bold text-[#4F4B56];
+    }
+  }
+}

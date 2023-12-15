@@ -1,0 +1,8 @@
+.account-list-card {
+  @apply border  border-gray-100 rounded-xl px-6 h-full;
+  width: 278px;
+
+  .active {
+    @apply text-textBack font-bold;
+  }
+}

@@ -1,32 +1,31 @@
 <template>
   <div>
     <bread-crumb :breadCrumb="breadCrumbLink" :title="breadCrumbTitle" />
-   
+
     <div class="container mx-auto">
-        <order-panel />
-      <div class="flex justify-between mt-5 ">
+      <order-panel />
+      <div class="flex justify-between mt-5">
         <category-filter-card
-       
           :category="categoryList"
           @filterCategory="filterCategory"
         />
 
-        <div class="flex flex-wrap 2xl:w-[80%] w-[75%]  gap-5 bg- justify-start">
-          <div v-for="item in 6" :key="item">
+        <div class="flex flex-wrap 2xl:w-[80%] w-[75%] gap-5 bg- justify-start">
+          <div v-for="item in 5" :key="item">
             <product-card />
           </div>
+   
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, computed } from "vue";
+const axios = useNuxtApp().$api;
 
-export default {
-  components: {},
-  setup() {
+
     const categoryList = ref([
       {
         id: 1,
@@ -54,6 +53,8 @@ export default {
         stock: 20,
       },
     ]);
+    
+    
 
     const filterCategory = (item) => {
       console.log(item.category);
@@ -70,14 +71,8 @@ export default {
       },
     ]);
 
-    return {
-      breadCrumbTitle,
-      breadCrumbLink,
-      categoryList,
-      filterCategory,
-    };
-  },
-};
+
+
 </script>
 
 <style></style>

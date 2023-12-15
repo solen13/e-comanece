@@ -46,7 +46,20 @@ export default defineNuxtConfig({
         {
           path: '/urunler/:detail',
           file: '@/pages/products/detail.vue'
-        }
+        },
+    //     {
+    //         name: 'hesabim',
+    //         path: '/hesabim',
+    //         file: '@/pages/account/index.vue'
+    //    },
+       
+    //     {
+    //         name: 'profil',
+    //         path: '/hesabim/profil',
+    //         file: '@/pages/account/profile.vue'
+    //    },
+ 
+
       )
     }
   },

@@ -6,6 +6,8 @@
     <service-card  />
    <special-product/>
    <serial-banner-card class="mt-10 mb-10"/>
+
+
   </div>
 </template>
 

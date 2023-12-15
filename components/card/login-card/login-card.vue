@@ -1,76 +1,46 @@
-<script setup>
-import {ref,reactive,computed} from "vue"
-import { useForm } from "vee-validate";
-
-const form = reactive({
-  email: "",
-  password: "",
-  terms: false,
-});
-
-const formSchema = computed(() => {
-  return {
-    email: "required|email",
-    password: "required",
-    terms: "required",
-  };
-});
-
-const { validate, errors } = useForm({
-  validationSchema: formSchema,
-});
-
-const scrollToValidation = (errorName) => {
-  const el = document.querySelector(`[name="${errorName}"]`);
-  if (el) {
-    el.scrollIntoView({ block: "start", behavior: "smooth" });
-  }
-};
-
-const handleFormSubmit = async () => {
-  const validator = await validate();
-
-  const firstErrorFieldName = Object.keys(errors.value)[0];
-  scrollToValidation(firstErrorFieldName);
-
-  if (!validator.valid) {
-    return;
-  }
-
-  alert("Submited");
-};
-</script>
 
 <template>
-  <div class="simple-form">
-    <h1>Simple Form</h1>
-    <form>
-      <app-input
-        inputType="text"
-        inputName="email"
-        placeholder="email"
-        v-model="form.email"
-      ></app-input
-      ><app-input
-        inputType="password"
-        inputName="password"
-        placeholder="password"
-        v-model="form.password"
-      ></app-input
+  <div class="login-card">
+    <h1 class="text-center mt-2 font-bold text-xl mb-8">Giriş Yap</h1>
+    <div class="flex flex-col w-[392px] mx-auto">
+      <span class="flex flex-col">
+        <label class="font-bold"> E-posta Adresi </label>
+        <input
+          type="email"
+          placeholder="E-posta adresinizi giriniz"
+          class="input-style"
+        />
+      </span>
+      <span class="flex flex-col mt-3">
+        <label class="font-bold"> porola </label>
+        <input
+          type="password"
+          placeholder="Porolanızı giriniz"
+          class="input-style"
+        />
+        <div class="flex justify-end">
+          <nuxt-link class="text-green font-semibold" to="/"
+            >Parolamı Unuttum</nuxt-link
+          >
+        </div>
+      </span>
+    </div>
+    <div class="mt-7 flex flex-col justify-center items-center">
+      <button class="w-1/2 bg-darkGreen text-white-100 py-2 rounded-lg">
+        Giriş yap
+      </button>
+      <p class="account-control-text text-center">Hesabınız yokmu?</p>
+      <button
+        class="w-1/2 text-darkGreen border border-darkGreen py-2 rounded-lg mt-2"
       >
-      
-      <app-checkbox
-        name="terms"
-        inputId="terms"
-        v-model="form.terms"
-        :value="true"
-        text="Terms check!"
-      ></app-checkbox>
-      <div class="h-[1000px] w-1/2 bg-gray-100 p-8 my-4">
-        <p>Scroll to invalid validation check</p>
-      </div>
-    </form>
-    <button @click.prevent="handleFormSubmit" type="submit">Submit</button>
-    <pre>{{ form }}</pre>
+        Kayıt Ol
+      </button>
+    </div>
   </div>
 </template>
+
+<script setup>
+</script>
+
+<style lang="scss" src="./login-card.scss">
+</style>
