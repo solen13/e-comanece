@@ -11,35 +11,19 @@
       </li>
     </ul>
     <div class="py-6">
-      <button class="text-textRed font-bold">Çıkış Yap</button>
+      <button @click="logout" class="text-textRed font-bold">Çıkış Yap</button>
     </div>
   </div>
 </template>
 
 <script setup>
-const profilLink = ref([
-  {
-    id: 1,
-    name: "Profil Bilgilerim",
-    link: "/account/profile",
-  },
-  {
-    id: 2,
-    name: "Adreslerim",
-    link: "/account/address",
-  },
+import {profilLink} from "@/constant/accountLinkList"
+import {useAuthStore} from "@/stores/auth"
+ const authStore=useAuthStore()
+const logout=()=>{
 
-  {
-    id: 3,
-    name: "Siparişlerim",
-    link: "/account/order",
-  },
-  {
-    id: 4,
-    name: "Ürün iadesi",
-    link: "/account/product-return",
-  },
-]);
+    authStore.logout()
+}
 </script>
 
 <style lang="scss" src="./account-list-card.scss">

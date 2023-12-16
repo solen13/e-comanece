@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="breadCrumb"
-    class="w-full h-60 bg-white-200 flex justify-center"
-  >
+  <div v-if="breadCrumb" class="w-full h-60 bg-white-200 flex justify-center">
     <div class="flex justify-start flex-col container mt-16">
       <h1 class="text-2xl font-bold mb-2 uppercase">
         {{ title }}
@@ -15,17 +12,15 @@
           >
             <span :class="{ 'text-green': breadCrumb.length - 1 !== index }"
               >{{ item.title }}
-              <!-- <span v-if="breadCrumb.length - 1 === index && breadCrumb.length ===2">
-                <Icon
-              
-              name="mdi-light:chevron-right"
-              size="14"
-            ></Icon>
-              {{
-                title
-              }}</span> -->
-              </span
-            >
+              <span
+                v-if="
+                  breadCrumb.length - 1 === index && breadCrumb.length === 1
+                "
+              >
+                <Icon name="mdi-light:chevron-right" size="14"></Icon>
+                {{ title }}</span
+              >
+            </span>
 
             <Icon
               v-if="breadCrumb.length - 1 !== index"

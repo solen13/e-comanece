@@ -13,7 +13,7 @@
         />
       </span>
       <span class="flex flex-col mt-3">
-        <label class="font-bold"> porola </label>
+        <label class="font-bold"> Parola </label>
         <input
           type="password"
           placeholder="Porolanızı giriniz"
@@ -28,11 +28,15 @@
       </span>
     </div>
     <div class="mt-7 flex flex-col justify-center items-center">
-      <button @click="loginBtn" class="w-1/2 bg-darkGreen text-white-100 py-2 rounded-lg">
+      <button
+        @click="loginBtn"
+        class="w-1/2 bg-darkGreen text-white-100 py-2 rounded-lg"
+      >
         Giriş yap
       </button>
       <p class="account-control-text text-center">Hesabınız yokmu?</p>
-      <nuxt-link to="/register"
+      <nuxt-link
+        to="/register"
         class="w-1/2 text-darkGreen border border-darkGreen py-2 rounded-lg mt-2 text-center"
       >
         Kayıt Ol
@@ -42,30 +46,27 @@
 </template>
 
 <script setup>
+import { useAuthStore } from "@/stores/auth";
 
+const authStore = useAuthStore();
+const emailText = ref("kminchelle");
+const passwordText = ref("0lelplR");
+const router = useRouter();
 
-import {useAuthStore} from "@/stores/auth"
- const authStore=useAuthStore()
-const emailText=ref("kminchelle")
-const passwordText=ref("0lelplR")
-const router = useRouter()
-const loginBtn=async()=>{
-
-    authStore.login(emailText.value,passwordText.value).then(res=>{
-        console.log(res)
-       //
-       if(res){
-        router.push("/account/profile")
-       }else{
-        alert("Böyle Bir Kullanıcı Yok")
-       }
-    
-    }).catch(e=>{
-        alert(e.message)
+const loginBtn = async () => {
+  authStore
+    .login(emailText.value, passwordText.value)
+    .then((res) => {
+      if (res) {
+        router.push("/account/profile");
+      } else {
+        alert("Böyle Bir Kullanıcı Yok");
+      }
     })
-   
-
-}
+    .catch((e) => {
+      alert(e.message);
+    });
+};
 </script>
 
 <style lang="scss" src="./login-card.scss">

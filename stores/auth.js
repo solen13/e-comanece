@@ -11,17 +11,26 @@ export const useAuthStore = defineStore("useAuthStore", {
     actions: {
         async login(emailText, passwordText) {
             try {
-                const response = await axios.post('https://dummyjson.com/auth/login', {
+                const response = (await axios.post('https://dummyjson.com/auth/login', {
                     username: emailText,
                     password: passwordText,
 
-                });
-                const token = response.data.token
+                }))?.data
+
+                const { token } = response
                 console.log(response)
 
                 const tokens = useCookie("token");
                 tokens.value = token
-                this.userData = response.data
+                this.userData = response
+
+
+
+                const user = useCookie("user");
+                user.value = response
+
+                console.log(user)
+
                 return true
             } catch (error) {
                 console.error(error);
@@ -30,8 +39,17 @@ export const useAuthStore = defineStore("useAuthStore", {
 
 
         },
-        async repetLogin(userInfo) {
+        async checkUser(userInfo) {
             this.userData = userInfo
+        },
+        async logout() {
+            const router = useRouter()
+            const user = useCookie("user")
+            const token = useCookie("token")
+            token.value = null
+            user.value = null
+            this.userData = {}
+            router.push("/")
         }
     },
 });

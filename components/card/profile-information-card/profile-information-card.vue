@@ -90,8 +90,8 @@ const info = ref({
   surname: null,
   email: null,
   phone: "05431191790",
-  password: "12345",
-  rePassword: "12345",
+  password: "",
+  rePassword: "",
 });
 
 const userProfileInfoList = computed(() => {
