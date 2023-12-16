@@ -5,7 +5,6 @@ import axios from "axios"
 export const category = defineStore("category", {
     state: () => ({
         allProducts: [],
-        spliteCategoryProduct: [],
         productDetailsList: null,
 
     }),
@@ -51,7 +50,17 @@ export const category = defineStore("category", {
                 console.error(error);
             }
         },
+        async getMenuCategories() {
 
+            try {
+                const response = await axios.get("https://dummyjson.com/products/categories");
+                console.log(response)
+
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
 
     }
 });
