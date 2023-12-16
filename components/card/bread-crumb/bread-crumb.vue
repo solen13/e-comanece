@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="breadCrumb.length"
+    v-if="breadCrumb"
     class="w-full h-60 bg-white-200 flex justify-center"
   >
     <div class="flex justify-start flex-col container mt-16">
@@ -13,7 +13,20 @@
             @click="goToLink(item)"
             class="font-bold cursor-pointer whitespace-nowrap"
           >
-            <span :class="{'text-green':breadCrumb.length - 1 !== index}">{{ item.title }}</span>
+            <span :class="{ 'text-green': breadCrumb.length - 1 !== index }"
+              >{{ item.title }}
+              <!-- <span v-if="breadCrumb.length - 1 === index && breadCrumb.length ===2">
+                <Icon
+              
+              name="mdi-light:chevron-right"
+              size="14"
+            ></Icon>
+              {{
+                title
+              }}</span> -->
+              </span
+            >
+
             <Icon
               v-if="breadCrumb.length - 1 !== index"
               name="mdi-light:chevron-right"
@@ -41,7 +54,6 @@ const props = defineProps({
 });
 
 const goToLink = (item) => {
-  console.log(item.link);
   router.push(item.link);
 };
 </script>

@@ -3,18 +3,19 @@
     <div class="pb-3">
       <h3 class="font-bold">Sepet Toplamı</h3>
     </div>
+  
     <ul>
       <li>
         <span>Ara Toplam</span>
-        <span>185,44 TL</span>
+        <span>{{ total }} TL</span>
       </li>
       <li>
         <span>KDV(%18)</span>
-        <span>15,44 TL</span>
+        <span>15,00</span>
       </li>
       <li>
         <span>Kargo Ücreti</span>
-        <span>5,44 TL</span>
+        <span>5 TL</span>
       </li>
       <li>
         <span>İndirim</span>
@@ -23,7 +24,7 @@
     </ul>
     <div class="flex justify-between py-4 font-bold text-xl">
       <span>Toplam</span>
-      <span>230 TL</span>
+      <span>  {{ total +15+5 }} TL</span>
     </div>
     <div
       class="border border-gray-100 p-3 pr-6 rounded-lg flex flex-col justify-start"
@@ -62,8 +63,24 @@
 </template>
 
 <script setup>
-import {ref} from "vue"
 
+import { ref , computed} from "vue";
+import { basket } from "@/stores/basket.js";
+
+const product = basket();
+const total =computed(()=>{
+    let allTotalArray = [];
+ const paymetList=  product.basketItmes
+ for (let index = 0; index < paymetList.length; index++) {
+        const prince = paymetList[index].price;
+        const quantity = paymetList[index].quantity;
+        const calc = prince * quantity;
+        allTotalArray.push(calc);
+      }
+      const sum = allTotalArray.reduce((total, current) => total + current, 0);
+return sum
+
+})
 const discountText=ref("")
 
 const isDiscountActive=ref(false)

@@ -32,11 +32,11 @@
         Giriş yap
       </button>
       <p class="account-control-text text-center">Hesabınız yokmu?</p>
-      <button
-        class="w-1/2 text-darkGreen border border-darkGreen py-2 rounded-lg mt-2"
+      <nuxt-link to="/register"
+        class="w-1/2 text-darkGreen border border-darkGreen py-2 rounded-lg mt-2 text-center"
       >
         Kayıt Ol
-      </button>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -44,17 +44,26 @@
 <script setup>
 
 
-// const { $authStore, $generalStore, $axios } = useNuxtApp()
-// // const axios =useNuxtApp().$axios
-// const axios=$axios
 import {useAuthStore} from "@/stores/auth"
  const authStore=useAuthStore()
 const emailText=ref("kminchelle")
 const passwordText=ref("0lelplR")
+const router = useRouter()
 const loginBtn=async()=>{
 
-    authStore.login(emailText.value,passwordText.value)
+    authStore.login(emailText.value,passwordText.value).then(res=>{
+        console.log(res)
+       //
+       if(res){
+        router.push("/account/profile")
+       }else{
+        alert("Böyle Bir Kullanıcı Yok")
+       }
     
+    }).catch(e=>{
+        alert(e.message)
+    })
+   
 
 }
 </script>

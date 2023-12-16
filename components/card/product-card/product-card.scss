@@ -1,5 +1,5 @@
 .product-card {
-  @apply w-72 h-96;
+  @apply w-72 h-96 cursor-pointer;
 
   .img-content {
     width: 100%;
@@ -20,5 +20,13 @@
         display: flex;
       }
     }
+  }
+  .title {
+    width: 230px;
+
+    /* so overflow hidden works and keeps text on one row */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }

@@ -12,27 +12,37 @@
         <button class="mr-3">
           <Icon name="mdi:magnify" size="24" />
         </button>
-        <button>
+        <button @click="$router.push('/sepetim')">
           <Icon name="mdi:cart" size="24" />
         </button>
       </span>
-      <button
+    
+      <NuxtLink v-if="!isUserLogged" to="/login"
         class="border-2 py-1 border-darkGreen px-2 rounded-lg font-medium"
       >
         <Icon name="radix-icons:arrow-right" size="24" />
         <span class="ml-2">Giriş yap</span>
-      </button>
-      <button v-if="false" class="border-2 rounded-full p-2">
+      </NuxtLink>
+      <button v-else @click="isUserCard = !isUserCard"  class="border-2 rounded-full p-2">
         <Icon name="ic:baseline-person" size="24" />
       </button>
     </div>
   </div>
   <user-nav-card
-    v-if="false"
-    class="absolute top-0 right-0 z-99 mt-16 mr-24"
+    v-if="isUserCard"
+    class="absolute top-0 right-0 z-999 mt-16 mr-24"
   />
 </template>
 
-<script setup></script>
+<script setup>
+ import { computed, ref } from "vue";
+import {useAuthStore} from "@/stores/auth"
+
+const isUserCard=ref(false)
+const authStore=useAuthStore()
+
+const isUserLogged=computed(()=>authStore.userData.firstName)
+console.log(isUserLogged)
+</script>
 
 <style  lang="scss" src="./app-header.scss"></style>

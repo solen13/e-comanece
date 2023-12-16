@@ -5,6 +5,7 @@
 </template>
 
 <script setup>
+
 const breadCrumbTitle = ref("PROFİL BİLGİLERİM");
 const breadCrumbLink = ref([
   {

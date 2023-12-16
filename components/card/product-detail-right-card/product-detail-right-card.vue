@@ -1,8 +1,8 @@
 <template>
-  <div class="product-detail-right-card">
+  <div v-if="product" class="product-detail-right-card">
     <span class="border-b-[1px] border-gray-100 pb-2 ">
-      <h1 class="font-bold text-3xl mb-1">Kahverengi Cam kaplumbağa</h1>
-      <span class="text-green font-bold text-xl ">220TL</span>
+      <h1 class="font-bold text-3xl mb-1">{{ product.title }}</h1>
+      <span class="text-green font-bold text-xl ">{{product.price}}TL</span>
      
     </span>
     <div class="font-bold flex flex-col mt-2 mb-4">
@@ -12,10 +12,10 @@
       </span>
       <span>
         <span>Stok Durumu</span>
-        <span>2993</span>
+        <span>{{ product.stock }}</span>
       </span>
     </div>
-    <p class="text-gray-200 mb-2 font-semibold">Detaylı Ürün Açıklaması Gelecek</p>
+    <p class="text-gray-200 mb-2 font-semibold">{{ product.description }}</p>
 
     <div class="flex">
       <div class="border border-gray-100 px-3 rounded-md py-1">
@@ -29,6 +29,14 @@
 </template>
 
 <script setup>
+
+const props = defineProps({
+  product: {
+    type: Object,
+    default: () => {},
+  },
+
+});
 </script>
 
 <style lang="scss" src="./product-detail-right-card.scss">

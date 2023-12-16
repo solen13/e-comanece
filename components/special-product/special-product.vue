@@ -10,7 +10,7 @@
       <product-card v-for="item in 4" />
     </div>
     <div class="flex justify-center w-full">
-      <button class="border-2 border-darkGreen px-3 py-2 rounded-md">Tümünü görüntüle</button>
+      <nuxt-link to="/urunler" class="border-2 border-darkGreen px-3 py-2 rounded-md">Tümünü görüntüle</nuxt-link >
     </div>
   </div>
 </template>

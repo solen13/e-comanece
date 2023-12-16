@@ -10,6 +10,9 @@
   </template>
   
   <script setup>
+  definePageMeta({
+  middleware: "auth",
+});
   const breadCrumbTitle = ref("PROFİL BİLGİLERİM");
   const breadCrumbLink = ref([
     {

@@ -1,31 +1,45 @@
 <template>
-  <div class="product-card">
+  <div v-if="product" class="product-card">
     <div class="img-content">
-      <img
-        class="img"
-        src="https://cdn.dsmcdn.com/ty161/product/media/images/20210819/22/120333872/230410884/1/1_org_zoom.jpg"
-      />
-      <div class="hoverBasket ">
-        <button class="bg-white-100 px-3 py-1 ">
+      <img class="img" :src="product.images[0]" />
+      <div class="hoverBasket">
+        <button @click="addBasketBtn(product)" class="bg-white-100 px-3 py-1">
           <Icon name="mdi:cart" size="24" />
           Sepete Ekle
         </button>
       </div>
     </div>
-    <div class="flex justify-between">
+    <div
+      @click="$router.push(`/urunler/${product.id}`)"
+      class="flex justify-between"
+    >
       <span>
-        <h2 class="text-lg font-bold">Anahtarlık</h2>
+        <h2 class="text-lg font-bold title">{{ product.title }}</h2>
         <span class="mt-2 text-gray-200"
-          >stok:<span class="text-green font-semibold">500</span></span
+          >stok:<span class="text-green font-semibold">{{
+            product.stock
+          }}</span></span
         >
       </span>
-      <span class="font-bold text-green">30 TL</span>
+      <span class="font-bold text-green">{{ product.price }} TL</span>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { basket } from "@/stores/basket.js";
+
+const productAdd = basket();
+const props = defineProps({
+  product: {
+    type: Object,
+    default: () => {},
+  },
+});
+const addBasketBtn = (item) => {
+  productAdd.addBasket(item);
+};
+</script>
 
 <style lang="scss" src="./product-card.scss">
-
 </style>

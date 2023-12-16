@@ -1,11 +1,11 @@
 <template>
   <div>
-    <bread-crumb :breadCrumb="breadCrumbLink" :title="breadCrumbTitle" />
+    <bread-crumb v-if="productDetail" :breadCrumb="breadCrumbLink" :title="productDetail.title" />
     <div class="container mx-auto mt-16">
       <div class="flex">
-        <product-slider />
+        <product-slider :product="productDetail"/>
         <div class="w-1/2 ml-6">
-          <product-detail-right-card />
+          <product-detail-right-card  :product="productDetail"/>
         </div>
       </div>
       <div>
@@ -14,9 +14,8 @@
         <div class="ml-3 text-gray-200">Yorumlar(0)</div>
        </div>
        <div>
-        <p class="font-semibold mt-3">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>    
+        <p v-if="productDetail" class="font-semibold mt-3">
+           {{ productDetail.description  }}      </p>    
     
     </div>
     </div>
@@ -33,7 +32,25 @@
 </template>
 
 <script setup>
-const breadCrumbTitle = ref("ürün detay");
+import { ref, computed ,onMounted} from "vue";
+import {category} from "@/stores/category.js"
+
+import { useRoute } from "vue-router";
+
+const product= category()
+
+
+ onMounted(()=>{
+    const route = useRoute();
+    const url = route.params.detail;
+    product.productDetails(url)
+ })
+ const productDetail=computed(()=>{
+  
+   return product.productDetailsList
+ })
+
+
 const breadCrumbLink = ref([
   {
     title: "Ana sayfa",
@@ -41,13 +58,13 @@ const breadCrumbLink = ref([
   },
   {
     title: "Ürünler",
-    link: "/",
+    link: "/urunler",
   },
-  {
-    title: "kaplumbağa",
-    link: "/",
-  },
+
+
 ]);
+
+
 </script>
 
 <style>

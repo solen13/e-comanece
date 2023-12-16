@@ -8,6 +8,10 @@
   span {
     @apply flex flex-col;
   }
+  span[role='alert'] {
+    @apply text-textRed;
+    font-size: 12px;
+  }
   .account-control-text {
     position: relative;
     font-size: 18px;

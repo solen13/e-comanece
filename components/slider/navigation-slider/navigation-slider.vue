@@ -1,5 +1,5 @@
 <template>
-  <swiper
+  <swiper class="z-9"
     :slidesPerView="1"
     :spaceBetween="30"
     :loop="true"
