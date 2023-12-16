@@ -1,6 +1,6 @@
 <template>
   <vue-awesome-paginate
-    :total-items="productListLength"
+    :total-items="10"
     :items-per-page="5"
     :max-pages-shown="5"
     v-model="currentPage"
@@ -12,27 +12,14 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { category } from "@/stores/category.js";
 
-const route = useRoute();
-
 const productListLength = ref(0);
 const currentPage = ref(1);
-const products = category();
+
+const emit = defineEmits(["perPage"]);
 
 const onClickHandler = (page) => {
-  products.allProduct(page);
+  emit("perPage", page);
 };
-
-onMounted(() => {
-  if (route.query.category) {
-    console.log(route.query.category);
-    products.productCategory(route.query.category);
-    productListLength.value = products.allProducts.length + 1;
-  } else {
-    products.allProduct(1);
-    productListLength.value = 50;
-  }
-});
-
 </script>
   
   <style>

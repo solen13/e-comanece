@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia';
 import axios from "axios"
-
-
+import { convertCategories } from "@/utils/categoryFiltered"
 export const category = defineStore("category", {
     state: () => ({
         allProducts: [],
         productDetailsList: null,
+
+        convertedStockCategories: [],
 
     }),
 
@@ -56,6 +57,20 @@ export const category = defineStore("category", {
                 const response = await axios.get("https://dummyjson.com/products/categories");
                 console.log(response)
 
+
+            } catch (error) {
+                console.error(error);
+            }
+        },
+
+        async getAllStockByCategories() {
+
+            try {
+                const response = await axios.get('https://dummyjson.com/products?limit=100');
+
+                const resData = response.data.products
+
+                this.convertedStockCategories = convertCategories(resData)
 
             } catch (error) {
                 console.error(error);

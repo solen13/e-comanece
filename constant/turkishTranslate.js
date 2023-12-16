@@ -1,29 +1,4 @@
-
-
-const categories = [
-    "smartphones",
-    "laptops",
-    "fragrances",
-    "skincare",
-    "groceries",
-    "home-decoration",
-    "furniture",
-    "tops",
-    "womens-dresses",
-    "womens-shoes",
-    "mens-shirts",
-    "mens-shoes",
-    "mens-watches",
-    "womens-watches",
-    "womens-bags",
-    "womens-jewellery",
-    "sunglasses",
-    "automotive",
-    "motorcycle",
-    "lighting"
-];
-
-const turkishTranslations = {
+export const turkishTranslations = {
     "smartphones": "Akıllı Telefon",
     "laptops": "Laptop",
     "fragrances": "Parfüm",
@@ -45,11 +20,3 @@ const turkishTranslations = {
     "motorcycle": "Motosiklet",
     "lighting": "Aydınlatma"
 };
-
-const menuList = categories.map((category, index) => ({
-    name: turkishTranslations[category] || "", // Türkçe çeviri yoksa boş string
-    link: category,
-    id: index + 1
-}));
-
-export default menuList
