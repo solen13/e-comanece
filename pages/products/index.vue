@@ -35,10 +35,6 @@ const productList = computed(() => {
   return product.allProducts;
 });
 
-onMounted(()=>{
-
-})
-
 const categoryList = ref([
   {
     id: 1,

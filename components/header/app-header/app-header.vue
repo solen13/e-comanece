@@ -52,8 +52,9 @@
 import { computed, ref } from "vue";
 import { useAuthStore } from "@/stores/auth";
 import menuList from "@/constant/menuList.js";
+const router=useRouter()
 
-console.log(menuList);
+
 
 const isUserCard = ref(false);
 const authStore = useAuthStore();
@@ -63,10 +64,12 @@ const menuListDropdown = ref(menuList.slice(6));
 const isUserLogged = computed(() => authStore.userData.firstName);
 
 
+
 const gotoCategory = (item) => {
   console.log(item.link);
-
-
+  
+  router.push("/products?category="+item.link)
+  
 };
 </script>
 

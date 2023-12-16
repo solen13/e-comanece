@@ -35,16 +35,18 @@ export default defineNuxtConfig({
         }
     }
     ],
+    
   hooks: {
+    
     'pages:extend'(routes) {
       routes.push(
         {
-          name: 'urunler',
-          path: '/urunler',
+          name: 'products',
+          path: '/products',
           file: '@/pages/products/index.vue'
         },
         {
-          path: '/urunler/:detail',
+          path: '/products/:detail',
           file: '@/pages/products/detail.vue'
         },
     //     {

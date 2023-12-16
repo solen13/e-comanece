@@ -10,7 +10,7 @@
       </div>
     </div>
     <div
-      @click="$router.push(`/urunler/${product.id}`)"
+      @click="$router.push(`/products/${product.id}`)"
       class="flex justify-between"
     >
       <span>
