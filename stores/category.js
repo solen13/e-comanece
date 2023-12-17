@@ -11,9 +11,9 @@ export const category = defineStore("category", {
     }),
 
     actions: {
-        async allProduct(spiliteNum) {
+        async getAllProducts({ pageNo = 1, limit = 100 }) {
             try {
-                const response = await axios.get('https://dummyjson.com/products?limit=6&skip=' + spiliteNum);
+                const response = await axios.get(`https://dummyjson.com/products?limit=${limit}&skip=` + pageNo);
 
                 console.log(response.data.products)
 
@@ -37,7 +37,7 @@ export const category = defineStore("category", {
                 console.error(error);
             }
         },
-        async productCategory(query) {
+        async fetchProductCategory(query) {
 
             try {
                 const response = await axios.get('https://dummyjson.com/products/category/' + query);

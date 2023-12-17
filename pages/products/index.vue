@@ -18,7 +18,12 @@
           </div>
 
           <div class="flex justify-center">
-            <pagination @perPage="perPage" />
+            <pagination
+              @clicked="getPageItems"
+              :itemsPerPage="6"
+              :totalItems="limit"
+              :currentPageNo="pageNo"
+            />
           </div>
         </div>
       </div>
@@ -31,12 +36,20 @@ import { ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { category } from "@/stores/category.js";
 
-
 const product = category();
+const maxShowCountPerPage = 6;
 
 const breadCrumbTitle = ref("ürünler");
-const router=useRouter()
-
+const router = useRouter();
+const route = useRoute();
+const pageNo = computed(() => {
+  if (route.query.page) {
+    return parseInt(route.query.page);
+  } else {
+    return 1;
+  }
+});
+const limit = ref(100);
 const breadCrumbLink = ref([
   {
     title: "Ana sayfa",
@@ -47,70 +60,75 @@ const breadCrumbLink = ref([
     link: "/",
   },
 ]);
-const categoryList = ref([
-  {
-    id: 1,
-    category: "Telefon",
-    stock: 20,
-  },
-  {
-    id: 2,
-    category: "bilgisay",
-    stock: 20,
-  },
-  {
-    id: 3,
-    category: "termus",
-    stock: 20,
-  },
-  {
-    id: 4,
-    category: "bilgisayar",
-    stock: 20,
-  },
-  {
-    id: 5,
-    category: "klavye",
-    stock: 20,
-  },
-]);
+const defaultCategory = ref("");
+const stockCategories = computed(() => product.convertedStockCategories);
 
-const defaultCategory=ref("")
-const stockCategories=computed(()=>{
-  return  product.convertedStockCategories
-})
+const categoryQuery = computed(() => route.query.category);
 
-const route = useRoute();
-const productList = computed(() => {
-  return product.allProducts;
+const selectedCategory = computed(() => {
+  if (categoryQuery.value) {
+    return product.convertedStockCategories.find(
+      (item) => item.category === categoryQuery.value
+    );
+  }
 });
 
+// console.log("selectedCategory", product.convertedStockCategories.value);
+// console.log("stockCategories", stockCategories.value);
+const productList = ref([]);
 
-product.getAllStockByCategories()
 
+const { data, pending, error, refresh } = await useAsyncData(async () => {
+  product.getAllStockByCategories();
 
-if (route.query.category) {
-    product.productCategory(route.query.category);  
-    defaultCategory.value=route.query.category
+  if (categoryQuery.value) {
+    getProductCategory(categoryQuery.value);
   } else {
-    product.allProduct(1);
+    product.getAllProducts({ pageNo: 1, limit: limit.value }).then(() => {
+      productList.value = product.allProducts.slice(0, maxShowCountPerPage);
+    });
   }
+});
 
-  watch(()=>route.query.category,(query)=>{
-    product.productCategory(query);  
-    defaultCategory.value=query
-  })
+const getProductCategory = (query) => {
+  product.fetchProductCategory(query).then(() => {
+    productList.value = product.allProducts.slice(0, maxShowCountPerPage);
+  });
+  defaultCategory.value = query;
+};
 
-  
+watch(
+  () => categoryQuery.value,
+  (query) => {
+    console.log("qrey", query);
+    getProductCategory(query);
+  }
+);
 
-const perPage=(page)=>{
-  product.allProduct(page);
-}
+onMounted(async () => {
+  await nextTick();
+  const pageNumberQuery = route.query.page;
+
+  if (pageNumberQuery) {
+    setTimeout(() => {
+      getPageItems(parseInt(pageNumberQuery));
+    }, 500);
+  } else {
+    console.log("stock", stockCategories.value);
+  }
+});
+
+const getPageItems = (pageNumber) => {
+  console.log("type", typeof pageNumber);
+  const startIndex = (pageNumber - 1) * maxShowCountPerPage;
+  const endIndex = startIndex + maxShowCountPerPage;
+  productList.value = product.allProducts.slice(startIndex, endIndex);
+  console.log("pros", product.allProducts[0], startIndex, endIndex);
+  router.push("/products?page=" + pageNumber);
+};
 
 const filterCategory = (item) => {
-  console.log(item.category);
-
-  router.push("/products?category="+item.category)
+  router.push("/products?category=" + item.category);
 };
 </script>
 

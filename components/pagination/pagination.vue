@@ -1,24 +1,42 @@
 <template>
   <vue-awesome-paginate
-    :total-items="10"
-    :items-per-page="5"
-    :max-pages-shown="5"
+    
+    :total-items="totalItems"
+    :items-per-page="itemsPerPage"
+    :max-pages-shown="maxPage"
     v-model="currentPage"
     :on-click="onClickHandler"
   />
 </template>
   <script setup>
-import { ref, onMounted } from "vue";
-import { useRoute } from "vue-router";
-import { category } from "@/stores/category.js";
+import { ref } from "vue";
 
-const productListLength = ref(0);
-const currentPage = ref(1);
+const props = defineProps({
+    currentPageNo:{
+    type: Number,
+    default: 1,
+    },
+  totalItems: {
+    type: Number,
+    default: 1,
+  },
+  itemsPerPage: {
+    type: Number,
+    default: 1,
+  },
+  maxPage:{
+    type: Number,
+    default: 5,
+  }
 
-const emit = defineEmits(["perPage"]);
+});
+
+const currentPage=ref(props.currentPageNo)
+const emit = defineEmits(["clicked"]);
 
 const onClickHandler = (page) => {
-  emit("perPage", page);
+  emit("clicked", page);
+ 
 };
 </script>
   
