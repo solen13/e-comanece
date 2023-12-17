@@ -48,17 +48,17 @@ export const useAuthStore = defineStore("useAuthStore", {
 
             axios.post('https://dummyjson.com/users/add', {
                 firstName: userInfo.username,
+                username: userInfo.username,
                 lastName: userInfo.surname,
-                ID: userInfo.tcNumber,
                 email: userInfo.email,
                 addressTitle: userInfo.addressTitle,
-                phone: info.phoneNumber,
-                city: userInfo.city,
-                district: userInfo.district,
-                fullAddress: userInfo.fullAddress,
+                tc: userInfo.phoneNumber,
+                id: 666,
                 password: userInfo.password,
-                Membership: userInfo.checkbox1,
-                consent: userInfo.checkbox2
+                addresss: {
+                    city: `${userInfo.city}-${userInfo.district}`,
+                    address: `${userInfo.fullAddress}`,
+                }
 
             }, {
                 headers: {

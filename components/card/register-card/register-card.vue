@@ -182,7 +182,7 @@ const { handleSubmit, errors, setFieldTouched } = useForm({
     username: "required|alpha_spaces",
     surname: "required|alpha_spaces",
     email: "required|email",
-    tcNumber: "required|numeric|digits:11",
+    tcNumber: "required|numeric|tcNumber:11",
     phoneNumber: "required|numeric",
     password: "required",
     passwordConfirmation: "required|confirmed:@password",

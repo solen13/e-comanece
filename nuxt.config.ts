@@ -2,10 +2,14 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/tailwind.css"],
-  modules: ["@nuxtjs/tailwindcss", "nuxt-icon", "@pinia/nuxt", "nuxt-swiper",
+  modules: ["@nuxtjs/tailwindcss", "nuxt-icon", "@pinia/nuxt", "nuxt-swiper","@nuxtjs/i18n"
  
 ],
-  
+
+i18n: {
+    vueI18n: './i18n.config.ts' 
+  },
+
   pinia: {
     storesDirs: ["./stores/**", "./custom-folder/stores/**"],
   },

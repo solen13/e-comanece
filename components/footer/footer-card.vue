@@ -3,7 +3,9 @@
    <div class="flex justify-between px-16 mt-16">
          <!-- left -->
          <div class="w-3/12">
-            <span>logo</span>
+            <NuxtLink to="/">
+                 <img src="@/assets/image/Logo.png"/>
+            </NuxtLink>
             <p class="  mt-10 font-semibold">
                 The biggest marketplace managed by Ideologist corp, which provides various kinds of daily needs and hobbies.
             </p>

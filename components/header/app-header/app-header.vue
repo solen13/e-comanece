@@ -1,9 +1,11 @@
 <template>
   <div class="app-header">
-    <div>logo</div>
+    <NuxtLink  to="/">
+        <img src="../../../assets/image/Logo.png"/>
+    </NuxtLink>
     <div class="flex gap-3 text-textBack font-bold">
       <!-- <nuxt-link :key="item.id" :to="item.link"> {{ item.name }}</nuxt-link> -->
-      <div v-for="(item, index) in menuListLeft" :key="item.id">
+      <div  v-for="(item, index) in menuListLeft" :key="item.id" class="cursor-pointer">
         <div @click="gotoCategory(item)" class="hover:text-textRed">
           {{ item.name }}
         </div>
@@ -13,13 +15,13 @@
         title="..."
         :showIcon="false"
         @clicked="gotoCategory"
+        class="cursor-pointer"
       />
     </div>
     <div class="text-darkGreen">
       <span class="border-r border-gray-100 mr-2 pr-1">
-        <button class="mr-3">
-          <Icon name="mdi:magnify" size="24" />
-        </button>
+      
+        <search-modal @search="search"/>
         <button @click="$router.push('/sepetim')">
           <Icon name="mdi:cart" size="24" />
         </button>
@@ -54,8 +56,6 @@ import { useAuthStore } from "@/stores/auth";
 import menuList from "@/constant/menuList.js";
 const router=useRouter()
 
-
-
 const isUserCard = ref(false);
 const authStore = useAuthStore();
 const menuListLeft = ref(menuList.slice(0, 6));
@@ -64,13 +64,16 @@ const menuListDropdown = ref(menuList.slice(6));
 const isUserLogged = computed(() => authStore.userData.firstName);
 
 
-
+const search=(item)=>{
+    router.push("/products?category="+item)
+    
+}
 const gotoCategory = (item) => {
-  console.log(item.link);
-  
   router.push("/products?category="+item.link)
   
 };
+
+
 </script>
 
 <style  lang="scss" src="./app-header.scss"></style>

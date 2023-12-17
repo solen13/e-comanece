@@ -16,5 +16,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     } else {
         token.value = null
+
+
     }
 })

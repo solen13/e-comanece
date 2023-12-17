@@ -39,6 +39,7 @@ const emit = defineEmits(["clicked"]);
 
 const order = (item) => {
   emit("clicked", item);
+  
 };
 </script>
 
