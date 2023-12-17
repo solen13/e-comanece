@@ -42,6 +42,36 @@ export const useAuthStore = defineStore("useAuthStore", {
         async checkUser(userInfo) {
             this.userData = userInfo
         },
+        async register(userInfo) {
+
+            console.log(userInfo)
+
+            axios.post('https://dummyjson.com/users/add', {
+                firstName: userInfo.username,
+                lastName: userInfo.surname,
+                ID: userInfo.tcNumber,
+                email: userInfo.email,
+                addressTitle: userInfo.addressTitle,
+                phone: info.phoneNumber,
+                city: userInfo.city,
+                district: userInfo.district,
+                fullAddress: userInfo.fullAddress,
+                password: userInfo.password,
+                Membership: userInfo.checkbox1,
+                consent: userInfo.checkbox2
+
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    console.log(response.data);
+                })
+                .catch(error => {
+                    console.error('Hata oluştu:', error);
+                });
+        },
         async logout() {
             const router = useRouter()
             const user = useCookie("user")

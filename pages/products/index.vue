@@ -8,6 +8,7 @@
         <category-filter-card
           :category="stockCategories"
           @clicked="filterCategory"
+          :defaultCategory="defaultCategory"
         />
         <div class="2xl:w-[80%] w-[75%]">
           <div class="flex flex-wrap gap-5 bg- justify-start">
@@ -74,6 +75,7 @@ const categoryList = ref([
   },
 ]);
 
+const defaultCategory=ref("")
 const stockCategories=computed(()=>{
   return  product.convertedStockCategories
 })
@@ -88,15 +90,15 @@ product.getAllStockByCategories()
 
 
 if (route.query.category) {
-    console.log(route.query.category);
     product.productCategory(route.query.category);  
+    defaultCategory.value=route.query.category
   } else {
     product.allProduct(1);
   }
 
   watch(()=>route.query.category,(query)=>{
     product.productCategory(query);  
-
+    defaultCategory.value=query
   })
 
   

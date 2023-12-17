@@ -173,6 +173,9 @@ import {
   useIsFieldValid,
   useIsFieldTouched,
 } from "vee-validate";
+import { useAuthStore } from "@/stores/auth";
+
+const authStore = useAuthStore();
 
 const { handleSubmit, errors, setFieldTouched } = useForm({
   validationSchema: {
@@ -208,7 +211,9 @@ const { value: checkbox2 } = useField("checkbox2");
 
 const router = useRouter()
 const submitForm = handleSubmit((item) => {
-  router.push("/login"); 
+//   router.push("/login"); 
+  authStore.register(item)
+
 });
 const  login=()=>{
     router.push("/login"); 
