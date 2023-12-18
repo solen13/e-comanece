@@ -77,9 +77,9 @@ const selectedCategory = computed(() => {
 const productList = ref([]);
 
 
-const { data, pending, error, refresh } = await useAsyncData(async () => {
+const { pending, refresh,data } = await useAsyncData( async () => {
   product.getAllStockByCategories();
-
+     console.log("dsd");
   if (categoryQuery.value) {
     getProductCategory(categoryQuery.value);
   } else {
@@ -87,7 +87,11 @@ const { data, pending, error, refresh } = await useAsyncData(async () => {
       productList.value = product.allProducts.slice(0, maxShowCountPerPage);
     });
   }
+  return data 
 });
+// onMounted(() => {
+//     refresh();
+//   });
 
 const getProductCategory = (query) => {
   product.fetchProductCategory(query).then(() => {
