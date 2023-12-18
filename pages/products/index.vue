@@ -3,7 +3,7 @@
     <bread-crumb :breadCrumb="breadCrumbLink" :title="breadCrumbTitle" />
 
     <div class="container mx-auto">
-      <order-panel />
+      <order-panel :categoryName="selectedCategory"  :categoryLength="limit"/>
       <div class="flex justify-between mt-5">
         <category-filter-card
           :category="stockCategories"
@@ -16,7 +16,7 @@
               <product-card :product="item" />
             </div>
           </div>
-          {{ selectedCategory }}
+        
           <div class="flex justify-center">
             <pagination
               @clicked="getPageItems"

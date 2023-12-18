@@ -1,6 +1,7 @@
 <template>
   <div class="order-panel flex justify-between items-center">
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing</p>
+    <p v-if="categoryName.name">{{categoryName.name}} kategorisinde  {{ categoryLength }}  farklı kategori {{categoryName.stock}} stok bulunmaktadır</p>
+    <p v-else > {{ categoryLength }} adet ürün bulundu</p>
     <div>
       <div class="flex justify-center items-center">
         <span class="mr-7 text-gray-100" >Sırala:</span>
@@ -43,10 +44,17 @@
 <script setup>
 import DropdownMenu from 'v-dropdown-menu';
 import '../../../node_modules/v-dropdown-menu/dist/vue3/v-dropdown-menu.css';
+const props = defineProps({
+   categoryName: {
+    type: String,
+    default: "",
+  },
+  categoryLength: {
+    type: Number,
+    default: 0,
+  },
+});
 
-const order=(item)=>{
-
-}
 </script>
 
 <style lang="scss" src="./order-panel.scss"></style>

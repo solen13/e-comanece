@@ -6,8 +6,11 @@
         Lorem ipsum dolor sit amet consectetur. Integer cursus cursus in
       </p>
     </div>
+   
     <div class="flex justify-center gap-7">
+     <client-only>
         <product-card  v-for="(item,index) in productSpecial" :key="index"  :product="item"/>    
+    </client-only>
     </div>
     <div class="flex justify-center w-full">
       <nuxt-link to="/products" class="border-2 border-darkGreen px-3 py-2 rounded-md">Tümünü görüntüle</nuxt-link >
@@ -22,13 +25,15 @@ const pageNo=1
 const limit=4
 const product = category();
 
-onMounted(()=>{
-    product.getSelectedProduct(pageNo,limit)
-})
- const productSpecial=computed(()=>{
-   return product.allProducts.slice(0, 4)
+let randomNumber = Math.floor(Math.random() * 90) + 1;
 
- })
+const productSpecial=computed(()=> product.allProducts.slice(randomNumber, randomNumber+4))
+
+const { pending, refresh } = await useAsyncData('product', async () =>  product.getSelectedProduct(pageNo,limit))
+// onMounted(()=>{
+//     product.getSelectedProduct(pageNo,limit)
+// })
+
 
 </script>
 
