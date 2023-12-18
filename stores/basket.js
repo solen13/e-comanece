@@ -26,9 +26,6 @@ export const basket = defineStore("basket", {
             this.basketItmes.splice(index, 1);
         },
         async increaseItemQuantity(index, product) {
-
-
-
             if (index != null) {
 
                 this.basketItmes[index].quantity++;
@@ -40,12 +37,8 @@ export const basket = defineStore("basket", {
                     existingItem.quantity++; // Eğer ürün zaten sepette varsa sayısını artır
                 } else {
                     this.basketItmes.push({ ...product, quantity: 1, }); // Yeni 
-
                 }
             }
-
-
-
         },
         async decreaseItemQuantity(index, product) {
             if (index !== null) {

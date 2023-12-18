@@ -25,10 +25,9 @@
         </div>
       </div>
 
-      <div class="mt-[200px]">
-        <h3 class="text-center font-bold text-xl mb-6">Diğer Ürünler</h3>
+      <div class="mt-[50px]">
         <div class="flex justify-between">
-          <product-card v-for="item in productSpecial" :key="item" :product="item"/>
+          <special-product title="Diğer Ürünler"/>
         </div>
       </div>
     </div>

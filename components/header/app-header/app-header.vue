@@ -19,6 +19,7 @@
         :showIcon="false"
         @clicked="gotoCategory"
         class="cursor-pointer"
+
       />
     </div>
     <div class="text-darkGreen flex">
@@ -26,7 +27,7 @@
         class="flex justify-center border-r border-gray-100 mr-2 pr-1 items-center"
       >
         <search-modal @search="search" @click="isUserCard = false" />
-        <button @click="$router.push('/sepetim')">
+        <button @click="$router.push('/my-orders')">
           <span
             v-if="baseketLength"
             class="bg-darkGreen text-white-100 rounded-full px-1"

@@ -1,7 +1,8 @@
 <template>
   <div class="order-panel flex justify-between items-center">
-    <p v-if="categoryName.name">{{categoryName.name}} kategorisinde  {{ categoryLength }}  farklı kategori {{categoryName.stock}} stok bulunmaktadır</p>
-    <p v-else > {{ categoryLength }} adet ürün bulundu</p>
+    <p v-if="categoryName?.name"><b>{{categoryName.name}}</b> kategorisinde <b> {{ categoryLength }} </b> farklı kategori {{categoryName.stock}} stok bulunmaktadır</p>
+    <p v-else > {{ categoryLength }} adet ürün bulundu</p> 
+   
     <div>
       <div class="flex justify-center items-center">
         <span class="mr-7 text-gray-100" >Sırala:</span>
@@ -46,8 +47,8 @@ import DropdownMenu from 'v-dropdown-menu';
 import '../../../node_modules/v-dropdown-menu/dist/vue3/v-dropdown-menu.css';
 const props = defineProps({
    categoryName: {
-    type: String,
-    default: "",
+    type: Object,
+    default: ()=>{},
   },
   categoryLength: {
     type: Number,

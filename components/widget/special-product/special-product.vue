@@ -1,7 +1,7 @@
 <template>
   <div class="special-product">
     <div class="head">
-      <h2>Özel ürünler</h2>
+      <h2>{{ title }}</h2>
       <p class="">
         Lorem ipsum dolor sit amet consectetur. Integer cursus cursus in
       </p>
@@ -21,6 +21,14 @@
 <script setup>
 import { ref,computed,onMounted } from "vue";
 import { category } from "@/stores/category.js";
+
+const props = defineProps({
+  title: {
+    type: String,
+    default: "Özel ürünler",
+  }
+});
+
 const pageNo=1
 const limit=4
 const product = category();

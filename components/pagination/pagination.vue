@@ -6,7 +6,6 @@
     v-model="currentPage"
     :on-click="onClickHandler"
   />
-  {{totalItems }}
 </template>
   <script setup>
 import { ref } from "vue";

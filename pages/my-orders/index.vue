@@ -42,7 +42,7 @@ const breadCrumbLink = ref([
   },
   {
     title: "Sepetim",
-    link: "/sepetim",
+    link: "/my-orders",
   },
 ]);
 

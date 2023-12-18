@@ -35,10 +35,15 @@ const props = defineProps({
     default: true
   }
 });
-const emit = defineEmits(["clicked"]);
+const emit = defineEmits(["clicked","dispatchEvent"]);
+const dispatchEvent=(item)=>{
+    emit("dispatchEvent", item);
+}
+
 
 const order = (item) => {
   emit("clicked", item);
+
   
 };
 </script>

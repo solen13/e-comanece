@@ -120,23 +120,23 @@ const extra=ref([
 const account=ref([
    {
         name:"Giriş yap",
-        link:""
+        link:"/login"
     },
     {
         name:"Kayıt Ol",
-        link:""
+        link:"/register"
     },
     {
         name:"Sepetim",
-        link:""
+        link:"/my-orders"
     },
     {
         name:"Hesabım",
-        link:""
+        link:"/account/profile"
     },
     {
         name:"Siparişler",
-        link:""
+        link:"/"
     },
     {
         name:"Bülten Aboneliği",
