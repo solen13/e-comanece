@@ -1,5 +1,6 @@
 <template>
   <swiper  
+  
     :slidesPerView="1"
     :spaceBetween="30"
     :loop="true"
@@ -9,7 +10,7 @@
     :navigation="true"
     :modules="modules"
   >
-    <swiper-slide v-for="item in bannerData" :key="item">
+    <swiper-slide  v-for="item in bannerData" :key="item">
       <slider-card :product="item" />
     </swiper-slide>
   </swiper>

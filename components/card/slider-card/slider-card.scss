@@ -1,6 +1,7 @@
 .slider-card {
   @apply flex items-center justify-around w-full px-20;
   .img-content {
+    height: 450px !important;
     img {
       height: 450px !important;
       object-fit: contain;

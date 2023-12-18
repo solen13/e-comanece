@@ -13,9 +13,9 @@
         </p>
       </div>
       <div class="mt-6 flex justify-start">
-        <button class="bg-darkGreen text-white-100 px-4 py-1 rounded-md">
+        <NuxtLink to="/products" class="bg-darkGreen text-white-100 px-4 py-1 rounded-md">
           Tüm Ürünler
-        </button>
+        </NuxtLink>
         <button class="border-2 border-darkGreen px-4 py-1 rounded-md ml-3">
           Detaylar Görüntüler
         </button>

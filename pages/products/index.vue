@@ -73,8 +73,7 @@ const selectedCategory = computed(() => {
   }
 });
 
-// console.log("selectedCategory", product.convertedStockCategories.value);
-// console.log("stockCategories", stockCategories.value);
+
 const productList = ref([]);
 
 
@@ -115,6 +114,7 @@ onMounted(async () => {
     }, 500);
   } else {
     console.log("stock", stockCategories.value);
+    
   }
 });
 
