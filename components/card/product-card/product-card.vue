@@ -52,17 +52,6 @@ const addBasketBtn = (item) => {
   productAdd.basketSuccess(true)
 };
 
-
-
-useHead({
-    title: 'ürünler',
-    meta: [
-      {
-        name: 'ürünler',
-        content: props.product.title
-      },
-    ],
-  });
 </script>
 
 <style lang="scss" src="./product-card.scss">

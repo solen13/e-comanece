@@ -40,10 +40,12 @@
 import { ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { category } from "@/stores/category.js";
+import categoryPageMetaTag from "~/common/categoryPageMetaTag.js";
 
 const product = category();
 const maxShowCountPerPage = 6;
 
+ const metaTag=ref({})
 const breadCrumbTitle = ref("ürünler");
 const router = useRouter();
 const route = useRoute();
@@ -75,6 +77,8 @@ const selectedCategory = computed(() => {
     return product.convertedStockCategories.find(
       (item) => item.category === categoryQuery.value
     );
+  }else{
+    return product.convertedStockCategories[0]
   }
 });
 
@@ -83,7 +87,10 @@ const productList = ref([]);
 const getProductCategory = (query) => {
   product.fetchProductCategory(query).then(() => {
     productList.value = product.allProducts.slice(0, maxShowCountPerPage);
+
     limit.value = product.allProducts.length;
+metaTag.value=categoryPageMetaTag(productList.value[0])
+
   });
   defaultCategory.value = query;
 };
@@ -130,16 +137,22 @@ const getPageItems = (pageNumber) => {
 const filterCategory = (item) => {
   router.push("/products?category=" + item.category);
 };
+console.log(metaTag.value)
 
-useHead({
-  title: "ürünler",
-  meta: [
-    {
-      name: "ürünler",
-      content: "web site acıklma",
-    },
-  ],
-});
+
+useServerSeoMeta({
+    ogTitle: () => metaTag.value.title,
+    title: () => metaTag.value.title,
+    description: () => "productDetails.description",
+    ogDescription: () => "productDetails.description",
+    ogImage: () => "productDetails.thumbnail",
+    ogImageUrl: () => "productDetails.thumbnail",
+    twitterCard: () => 'summary_large_image',
+    twitterTitle: () => "title",
+    twitterDescription: () => "productDetails.description",
+    twitterImage: () =>" productDetails.thumbnail"
+  })
+
 </script>
 
 <style></style>

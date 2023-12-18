@@ -12,15 +12,9 @@
 </template>
 
 <script setup>
-useHead({
-    title: 'Nuxt: The Intuitive Web Framework',
-    meta: [
-      {
-        name: 'ana sayfa',
-        content: 'Build your next Vue.js application with confidence using Nuxt....' 
-      },
-    ],
-  });
-</script>
 
+import mainPageMetaTag from "~/common/mainPageMetaTag.js";
+const metaTags = mainPageMetaTag();
+ useHead(metaTags);
+</script>
 <style></style>
