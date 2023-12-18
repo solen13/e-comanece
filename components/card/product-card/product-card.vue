@@ -19,7 +19,7 @@
         <span class="mt-2 text-gray-200  flex justify-between"
           ><span>
             Kategori: <span class="text-green font-semibold">{{
-            product.category
+            getProductName(product.category)
           }}</span>
           </span>
          
@@ -35,8 +35,13 @@
 
 <script setup>
 import { basket } from "@/stores/basket.js";
-
+import {turkishTranslations} from "@/constant/turkishTranslate"
 const productAdd = basket();
+
+const getProductName=(name)=>{
+   return turkishTranslations[name] || name
+}
+
 const props = defineProps({
   product: {
     type: Object,
@@ -47,6 +52,7 @@ const addBasketBtn = (item) => {
   productAdd.addBasket(item);
   productAdd.basketSuccess(true)
 };
+
 
 
 useHead({

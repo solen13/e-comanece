@@ -1,6 +1,5 @@
 <template>
   <swiper  
-  
     :slidesPerView="1"
     :spaceBetween="30"
     :loop="true"
@@ -69,7 +68,7 @@ export default {
 <style>
 .swiper {
   width: 100%;
-  height: 350px;
+  height: 450px !important;
 }
 
 .swiper-slide {
