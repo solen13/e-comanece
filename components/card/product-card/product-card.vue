@@ -13,14 +13,21 @@
       @click="$router.push(`/products/${product.id}`)"
       class="flex justify-between"
     >
-      <span>
+ 
+        <span>
         <h2 class="text-lg font-bold title">{{ product.title }}</h2>
-        <span class="mt-2 text-gray-200"
-          >stok:<span class="text-green font-semibold">{{
-            product.stock
-          }}</span></span
+        <span class="mt-2 text-gray-200  flex justify-between"
+          ><span>
+            Kategori: <span class="text-green font-semibold">{{
+            product.category
+          }}</span>
+          </span>
+         
+          </span
         >
       </span>
+
+     
       <span class="font-bold text-green">{{ product.price }} TL</span>
     </div>
   </div>
@@ -39,6 +46,17 @@ const props = defineProps({
 const addBasketBtn = (item) => {
   productAdd.addBasket(item);
 };
+
+
+useHead({
+    title: 'ürünler',
+    meta: [
+      {
+        name: 'ürünler',
+        content: props.product.title
+      },
+    ],
+  });
 </script>
 
 <style lang="scss" src="./product-card.scss">

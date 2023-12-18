@@ -1,5 +1,5 @@
 <template>
-    <div class="search-modal">
+    <div class="search-modal" >
      
       <button @click="openModal" class="mr-3">
           <Icon name="mdi:magnify" size="24" />

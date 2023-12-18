@@ -7,15 +7,26 @@
       </p>
     </div>
     <div class="flex justify-center gap-7">
-      <product-card v-for="item in 4" />
+        <product-card  v-for="(item,index) in productSpecial" :key="index"  :product="item"/>    
     </div>
     <div class="flex justify-center w-full">
-      <nuxt-link to="/urunler" class="border-2 border-darkGreen px-3 py-2 rounded-md">Tümünü görüntüle</nuxt-link >
+      <nuxt-link to="/products" class="border-2 border-darkGreen px-3 py-2 rounded-md">Tümünü görüntüle</nuxt-link >
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref,computed } from "vue";
+import { category } from "@/stores/category.js";
+const pageNo=1
+const limit=4
+const product = category();
+product.getAllProducts(pageNo,limit)
+ const productSpecial=computed(()=>{
+   return product.allProducts.slice(0, 4)
+
+ })
+ console.log(productSpecial)
 </script>
 
 <style lang="scss" src="./special-product.scss"></style>

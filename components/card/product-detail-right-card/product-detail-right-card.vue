@@ -19,17 +19,20 @@
 
     <div class="flex">
       <div class="border border-gray-100 px-3 rounded-md py-1">
-        <button class="text-gray-200 text-xl pr-2">-</button>
-        <span class="">1</span>
-        <button class="pl-2 text-xl  text-green">+</button>
+        <button @click="decreaseItemQuantity" class="text-gray-200 text-xl pr-2">-</button>
+        <span v-if="quantity">{{ quantity }}</span>
+        <span v-else="quantity" >0</span>
+        <button @click="increaseItemQuantity" class="pl-2 text-xl  text-green">+</button>
       </div>
-      <button  class="border font-semibold px-3 rounded-md py-1 w-[220px] ml-3 ">Sepete Ekle</button>
+      <button v-if="!quantity" @click="addBasketBtn"  class="border font-semibold px-3 rounded-md py-1 w-[220px] ml-3 ">Sepete Ekle</button>
     </div>
   </div>
 </template>
 
 <script setup>
+import { basket } from "@/stores/basket.js";
 
+const productAdd = basket();
 const props = defineProps({
   product: {
     type: Object,
@@ -37,6 +40,30 @@ const props = defineProps({
   },
 
 });
+
+const addBasketBtn = () => {
+  productAdd.addBasket(props.product);
+
+};
+
+const quantity=computed(()=>{
+   const productList= productAdd.basketItmes.find(item => item.id === props.product.id);
+if(productList){
+    return productList.quantity
+}
+  
+})
+
+
+const increaseItemQuantity = () => {
+    productAdd.increaseItemQuantity(null,props.product);
+};
+const decreaseItemQuantity = () => {
+    productAdd.decreaseItemQuantity(null,props.product);
+};
+const removeBtn=()=>{
+    product.removeItme(props.indexNum)
+}
 </script>
 
 <style lang="scss" src="./product-detail-right-card.scss">

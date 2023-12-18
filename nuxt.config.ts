@@ -13,7 +13,7 @@ i18n: {
   pinia: {
     storesDirs: ["./stores/**", "./custom-folder/stores/**"],
   },
-  ssr: false,
+  ssr: true,
 
 
   postcss: {

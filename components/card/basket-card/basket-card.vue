@@ -12,10 +12,18 @@
       </div>
     </div>
     <div>
-      <div class="flex">
+      <div class="flex " >
+       <div class="flex flex-col mr-6">
+        <span class="font-bold">
+            toplam
+        </span>
+        <p class="text-center text-green" >
+            {{  basketList.price *basketList.quantity}}
+        </p>
+       </div>
         <div class="border border-gray-100 px-3 rounded-md py-2">
           <button  @click="decreaseItemQuantity" class="text-gray-200 text-xl px-3">-</button>
-          <span class="">{{ basketList.quantity }}</span>
+          <span >{{ basketList.quantity }}</span>
           <button @click="increaseItemQuantity" class="px-3 text-xl text-green">
             +
           </button>

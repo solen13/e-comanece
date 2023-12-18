@@ -5,7 +5,6 @@
     :style="{
       '--swiper-navigation-color': '#1b98ff',
       '--swiper-pagination-color': '#1f1a1a',
-      
     
     }"
 

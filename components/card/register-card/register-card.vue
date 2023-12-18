@@ -211,7 +211,7 @@ const { value: checkbox2 } = useField("checkbox2");
 
 const router = useRouter()
 const submitForm = handleSubmit((item) => {
-//   router.push("/login"); 
+  router.push("/login"); 
   authStore.register(item)
 
 });

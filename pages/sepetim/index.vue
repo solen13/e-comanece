@@ -5,13 +5,16 @@
       <div style="margin-top: -30px"
         class="border border-gray-100 bg-white-100 rounded-lg px-3 flex flex-col w-1/2 h-full"
       >
-    
+    <div v-if="basketList.length >0">
         <basket-card
           v-for="(item, index) in basketList"
           :key="item"
           :basketList="item"
          :indexNum="index"
         /> 
+    </div >
+
+        <p v-else class="text-center">Sepetin Boş</p>
       </div>
       <div class=" flex  justify-end" style="margin-top: -100px">
         <product-order-total-card />
@@ -39,7 +42,7 @@ const breadCrumbLink = ref([
   },
   {
     title: "Sepetim",
-    link: "/",
+    link: "/sepetim",
   },
 ]);
 

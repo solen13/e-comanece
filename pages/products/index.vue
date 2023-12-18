@@ -130,6 +130,16 @@ const getPageItems = (pageNumber) => {
 const filterCategory = (item) => {
   router.push("/products?category=" + item.category);
 };
+
+useHead({
+    title: 'ürünler',
+    meta: [
+      {
+        name: 'ürünler',
+        content: "web site acıklma"
+      },
+    ],
+  });
 </script>
 
 <style></style>
