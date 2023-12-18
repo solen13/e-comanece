@@ -30,10 +30,6 @@ let randomNumber = Math.floor(Math.random() * 90) + 1;
 const productSpecial=computed(()=> product.allProducts.slice(randomNumber, randomNumber+4))
 
 const { pending, refresh } = await useAsyncData('product', async () =>  product.getSelectedProduct(pageNo,limit))
-// onMounted(()=>{
-//     product.getSelectedProduct(pageNo,limit)
-// })
-
 
 </script>
 
