@@ -74,6 +74,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { basket } from "@/stores/basket.js";
+
 const router = useRouter();
 const product = basket();
 const total = computed(() => {
@@ -100,6 +101,7 @@ const isDiscountActiveBtn = () => {
 const removeList = () => {
     product.removeBasketList()
     router.push("/")
+    product.basketSuccess(false);
 };
 </script>
 

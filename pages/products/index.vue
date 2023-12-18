@@ -4,17 +4,22 @@
 
     <div class="container mx-auto">
       <order-panel :categoryName="selectedCategory"  :categoryLength="limit"/>
-      <div class="flex justify-between mt-5">
+      <div class="flex justify-center mt-5">
         <category-filter-card
           :category="stockCategories"
           @clicked="filterCategory"
           :defaultCategory="defaultCategory"
         />
-        <div class="2xl:w-[80%] w-[75%]">
+        <div class="2xl:w-[65%] w-[75%] ml-10">
           <div class="flex flex-wrap gap-5 bg- justify-start">
             <div v-for="item in productList" :key="item.id">
               <product-card :product="item" />
             </div>
+              <div v-if="productList.length===0">
+               <div class="flex flex-wrap gap-5 bg- justify-start" >
+                <skeleton-product-card v-for="item in 6" :key="item"/>
+               </div>
+              </div>
           </div>
         
           <div class="flex justify-center">

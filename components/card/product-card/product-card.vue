@@ -13,7 +13,6 @@
       @click="$router.push(`/products/${product.id}`)"
       class="flex justify-between"
     >
- 
         <span>
         <h2 class="text-lg font-bold title">{{ product.title }}</h2>
         <span class="mt-2 text-gray-200  flex justify-between"
