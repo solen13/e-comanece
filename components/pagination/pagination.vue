@@ -1,12 +1,12 @@
 <template>
   <vue-awesome-paginate
-    
     :total-items="totalItems"
     :items-per-page="itemsPerPage"
     :max-pages-shown="maxPage"
     v-model="currentPage"
     :on-click="onClickHandler"
   />
+  {{totalItems }}
 </template>
   <script setup>
 import { ref } from "vue";
@@ -14,7 +14,7 @@ import { ref } from "vue";
 const props = defineProps({
     currentPageNo:{
     type: Number,
-    default: 1,
+    default: 0,
     },
   totalItems: {
     type: Number,
@@ -30,6 +30,7 @@ const props = defineProps({
   }
 
 });
+
 
 const currentPage=ref(props.currentPageNo)
 const emit = defineEmits(["clicked"]);

@@ -18,7 +18,6 @@ export const useAuthStore = defineStore("useAuthStore", {
                 }))?.data
 
                 const { token } = response
-                console.log(response)
 
                 const tokens = useCookie("token");
                 tokens.value = token
@@ -29,7 +28,7 @@ export const useAuthStore = defineStore("useAuthStore", {
                 const user = useCookie("user");
                 user.value = response
 
-                console.log(user)
+
 
                 return true
             } catch (error) {
@@ -43,8 +42,6 @@ export const useAuthStore = defineStore("useAuthStore", {
             this.userData = userInfo
         },
         async register(userInfo) {
-
-            console.log(userInfo)
 
             axios.post('https://dummyjson.com/users/add', {
                 firstName: userInfo.username,
@@ -66,7 +63,7 @@ export const useAuthStore = defineStore("useAuthStore", {
                 }
             })
                 .then(response => {
-                    console.log(response.data);
+
                 })
                 .catch(error => {
                     console.error('Hata oluştu:', error);

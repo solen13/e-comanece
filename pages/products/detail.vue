@@ -15,7 +15,7 @@
       </div>
       <div >
         <div class="border-b border-gray-100 flex font-bold">
-          <div class="border-b border-darkGreen px-3 pb-2">Açıklma</div>
+          <div class="border-b border-darkGreen px-3 pb-2">Açıklama</div>
           <div class="ml-3 text-gray-200">Yorumlar(0)</div>
         </div>
         <div>
@@ -45,14 +45,16 @@ const product = category();
 const pageNo=1
 const limit=4
 
-product.getAllProducts(pageNo,limit)
+product.getSelectedProduct(pageNo,limit)
  const productSpecial=computed(()=>{
-   return product.allProducts.slice(0, 4)
+
+   return product.allProducts.slice(4, 8)
  })
 
 onMounted(() => {
   const route = useRoute();
   const url = route.params.detail;
+    
   product.productDetails(url);
 });
 const productDetail = computed(() => {

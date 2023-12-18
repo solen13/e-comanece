@@ -16,17 +16,20 @@
 </template>
 
 <script setup>
-import { ref,computed } from "vue";
+import { ref,computed,onMounted } from "vue";
 import { category } from "@/stores/category.js";
 const pageNo=1
 const limit=4
 const product = category();
-product.getAllProducts(pageNo,limit)
+
+onMounted(()=>{
+    product.getSelectedProduct(pageNo,limit)
+})
  const productSpecial=computed(()=>{
    return product.allProducts.slice(0, 4)
 
  })
- console.log(productSpecial)
+
 </script>
 
 <style lang="scss" src="./special-product.scss"></style>

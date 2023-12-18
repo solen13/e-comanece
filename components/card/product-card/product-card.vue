@@ -45,6 +45,7 @@ const props = defineProps({
 });
 const addBasketBtn = (item) => {
   productAdd.addBasket(item);
+  productAdd.basketSuccess(true)
 };
 
 

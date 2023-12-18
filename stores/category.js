@@ -5,18 +5,12 @@ export const category = defineStore("category", {
     state: () => ({
         allProducts: [],
         productDetailsList: null,
-
         convertedStockCategories: [],
-
     }),
-
     actions: {
-        async getAllProducts({ pageNo = 1, limit = 100 }) {
+        async getSelectedProduct({ pageNo = 1, limit = 100 }) {
             try {
                 const response = await axios.get(`https://dummyjson.com/products?limit=${limit}&skip=` + pageNo);
-
-                console.log(response.data.products)
-
                 this.allProducts = response.data.products
 
             } catch (error) {
@@ -28,9 +22,6 @@ export const category = defineStore("category", {
 
             try {
                 const response = await axios.get(" https://dummyjson.com/products/" + route);
-
-                console.log(response)
-
                 this.productDetailsList = response.data
 
             } catch (error) {
@@ -42,7 +33,6 @@ export const category = defineStore("category", {
             try {
                 const response = await axios.get('https://dummyjson.com/products/category/' + query);
 
-                console.log(response)
 
                 this.allProducts = response.data.products
 
@@ -55,16 +45,14 @@ export const category = defineStore("category", {
 
             try {
                 const response = await axios.get("https://dummyjson.com/products/categories");
-                console.log(response)
-
 
             } catch (error) {
                 console.error(error);
             }
         },
 
-        async getAllStockByCategories() {
-
+        async getAllStockByCategoryList() {
+            // kategori çeşitlerini alıyoruz
             try {
                 const response = await axios.get('https://dummyjson.com/products?limit=100');
 

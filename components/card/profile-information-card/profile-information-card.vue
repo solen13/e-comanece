@@ -71,7 +71,7 @@
       </span>
     </div>
     <div class="mt-6">
-      <button class="w-full bg-darkGreen text-white-100 py-2 rounded-lg">
+      <button @click="update" class="w-full bg-darkGreen text-white-100 py-2 rounded-lg">
         Güncelle
       </button>
     </div>
@@ -83,7 +83,7 @@ import { ref, computed, watch, onMounted } from "vue";
 import { useAuthStore } from "@/stores/auth.js";
 
 const userProfileInfo = useAuthStore();
-
+const router=useRouter()
 const info = ref({
   tc: "212342342",
   name: null,
@@ -98,7 +98,6 @@ const userProfileInfoList = computed(() => {
   return userProfileInfo.userData;
 });
 watch(userProfileInfoList, async (news) => {
-  console.log(news);
   fillForm();
 });
 
@@ -111,6 +110,10 @@ const fillForm = () => {
 onMounted(() => {
   fillForm();
 });
+
+const update=()=>{
+    router.push("/")
+}
 </script>
 
 <style lang="scss" src="./profile-information-card.scss">

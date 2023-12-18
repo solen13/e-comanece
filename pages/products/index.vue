@@ -16,7 +16,7 @@
               <product-card :product="item" />
             </div>
           </div>
-
+          {{ selectedCategory }}
           <div class="flex justify-center">
             <pagination
               @clicked="getPageItems"
@@ -73,37 +73,31 @@ const selectedCategory = computed(() => {
   }
 });
 
-
 const productList = ref([]);
-
-
-const { pending, refresh,data } = await useAsyncData( async () => {
-  product.getAllStockByCategories();
-     console.log("dsd");
-  if (categoryQuery.value) {
-    getProductCategory(categoryQuery.value);
-  } else {
-    product.getAllProducts({ pageNo: 1, limit: limit.value }).then(() => {
-      productList.value = product.allProducts.slice(0, maxShowCountPerPage);
-    });
-  }
-  return data 
-});
-// onMounted(() => {
-//     refresh();
-//   });
 
 const getProductCategory = (query) => {
   product.fetchProductCategory(query).then(() => {
     productList.value = product.allProducts.slice(0, maxShowCountPerPage);
+    limit.value = product.allProducts.length;
   });
   defaultCategory.value = query;
 };
 
+const { pending, refresh, data } = await useAsyncData(async () => {
+  product.getAllStockByCategoryList();
+
+  if (categoryQuery.value) {
+    getProductCategory(categoryQuery.value);
+  } else {
+    product.getSelectedProduct({ pageNo: 1, limit: limit.value }).then(() => {
+      productList.value = product.allProducts.slice(0, maxShowCountPerPage);
+    });
+  }
+});
+
 watch(
   () => categoryQuery.value,
   (query) => {
-    console.log("qrey", query);
     getProductCategory(query);
   }
 );
@@ -116,18 +110,15 @@ onMounted(async () => {
     setTimeout(() => {
       getPageItems(parseInt(pageNumberQuery));
     }, 500);
-  } else {
-    console.log("stock", stockCategories.value);
-    
-  }
+  } 
 });
 
 const getPageItems = (pageNumber) => {
-  console.log("type", typeof pageNumber);
+
   const startIndex = (pageNumber - 1) * maxShowCountPerPage;
   const endIndex = startIndex + maxShowCountPerPage;
   productList.value = product.allProducts.slice(startIndex, endIndex);
-  console.log("pros", product.allProducts[0], startIndex, endIndex);
+ 
   router.push("/products?page=" + pageNumber);
 };
 
@@ -136,14 +127,14 @@ const filterCategory = (item) => {
 };
 
 useHead({
-    title: 'ürünler',
-    meta: [
-      {
-        name: 'ürünler',
-        content: "web site acıklma"
-      },
-    ],
-  });
+  title: "ürünler",
+  meta: [
+    {
+      name: "ürünler",
+      content: "web site acıklma",
+    },
+  ],
+});
 </script>
 
 <style></style>

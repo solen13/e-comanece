@@ -45,7 +45,7 @@ import DropdownMenu from 'v-dropdown-menu';
 import '../../../node_modules/v-dropdown-menu/dist/vue3/v-dropdown-menu.css';
 
 const order=(item)=>{
-console.log(item)
+
 }
 </script>
 

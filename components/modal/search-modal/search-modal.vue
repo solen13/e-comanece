@@ -18,11 +18,12 @@
                   placeholder="smartphone,laptops,fragrances,groceries..."
                   name="search"
                   autocomplete="off"
+                  class="w-full h-10 border border-gray-100 rounded-lg px-4"
   
               />
               <button
                   type="submit"
-                  class="w-full bg-darkGreen text-white-100 py-2 rounded-lg"
+                  class="w-full bg-darkGreen text-white-100 py-2 rounded-lg mt-3"
               >
                 {{ btnTitle }}
               </button>

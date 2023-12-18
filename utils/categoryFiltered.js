@@ -3,7 +3,6 @@ import { turkishTranslations } from "@/constant/turkishTranslate"
 export const convertCategories = (products) => {
     // Kategorilere ait stokları toplamak için bir obje oluştur,
 
-    console.log("converts", products)
     if (products) {
         const categoryStocks = {};
 

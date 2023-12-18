@@ -5,6 +5,7 @@ import { defineStore } from 'pinia';
 export const basket = defineStore("basket", {
     state: () => ({
         basketItmes: [],
+        isBasketSuccess: false
 
     }),
 
@@ -27,7 +28,7 @@ export const basket = defineStore("basket", {
         async increaseItemQuantity(index, product) {
 
 
-            console.log(index)
+
             if (index != null) {
 
                 this.basketItmes[index].quantity++;
@@ -39,7 +40,7 @@ export const basket = defineStore("basket", {
                     existingItem.quantity++; // Eğer ürün zaten sepette varsa sayısını artır
                 } else {
                     this.basketItmes.push({ ...product, quantity: 1, }); // Yeni 
-                    console.log(product)
+
                 }
             }
 
@@ -58,7 +59,7 @@ export const basket = defineStore("basket", {
                 const indexs = this.basketItmes.findIndex(obje => obje.id === product.id);
 
                 if (existingItem) {
-                    console.log(existingItem)
+
                     if (existingItem.quantity >= 0) {
                         existingItem.quantity--;
                         if (existingItem.quantity == 0) {
@@ -72,7 +73,9 @@ export const basket = defineStore("basket", {
         },
         async removeBasketList() {
             this.basketItmes = []
+        },
+        basketSuccess(status) {
+            this.isBasketSuccess = status
         }
-
     }
 });

@@ -15,7 +15,7 @@
         <span>{{ product.stock }}</span>
       </span>
     </div>
-    <p class="text-gray-200 mb-2 font-semibold">{{ product.description }}</p>
+
 
     <div class="flex">
       <div class="border border-gray-100 px-3 rounded-md py-1">
@@ -43,6 +43,7 @@ const props = defineProps({
 
 const addBasketBtn = () => {
   productAdd.addBasket(props.product);
+  productAdd.basketSuccess(true)
 
 };
 
