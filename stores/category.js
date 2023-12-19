@@ -21,9 +21,10 @@ export const category = defineStore("category", {
         async productDetails(route) {
 
             try {
-                const response = await axios.get(" https://dummyjson.com/products/" + route);
-                this.productDetailsList = response.data
 
+                const response = await axios.get("https://dummyjson.com/products/" + route);
+                this.productDetailsList = response.data
+                console.log((response))
             } catch (error) {
                 console.error(error);
             }
