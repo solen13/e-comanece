@@ -39,6 +39,9 @@ const productSpecial=computed(()=> product.allProducts.slice(randomNumber, rando
 
 const { pending, refresh } = await useAsyncData('product', async () =>  product.getSelectedProduct(pageNo,limit))
 
+onMounted(()=>{
+    product.getSelectedProduct(pageNo,limit)
+})
 </script>
 
 <style lang="scss" src="./special-product.scss"></style>
