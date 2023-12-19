@@ -138,7 +138,7 @@ const filterCategory = (item) => {
 useSeoMeta({
     ogTitle: () =>"ürünler",
     title: () =>"ürünler",
-    description: () =>"Tüm ürünler Burda",
+    description: () =>"Tüm ürünler Burada",
        
 })
 </script>

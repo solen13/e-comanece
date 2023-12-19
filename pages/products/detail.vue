@@ -6,10 +6,11 @@
       <button @click="refresh">yeniden dene</button>
     </template>
     <template v-else>
-      <!-- <bread-crumb
+       <bread-crumb
+       v-if="productDetail"
       :breadCrumb="breadCrumbLink"
       :title="productDetail.title"
-    /> -->
+    /> 
 
       <div class="container mx-auto mt-5">
         <div class="flex">
