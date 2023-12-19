@@ -20,6 +20,13 @@ const breadCrumbLink = ref([
     link: "/",
   },
 ]);
+
+useSeoMeta({
+    ogTitle: () =>"Kayıt Ol",
+    title: () =>"Kayıt Ol",
+    description: () =>"Kayıt işlemleri",
+       
+})
 </script>
 
 <style>

@@ -5,10 +5,10 @@
     <form  @submit.prevent="submitForm">
       <div class="flex flex-col w-[392px] mx-auto">
         <span class="flex flex-col">
-          <label class="font-bold"> E-posta Adresi </label>
+          <label class="font-bold"> kullanıcı adı </label>
           <input
             type="email"
-            placeholder="E-posta adresinizi giriniz"
+            placeholder="Kullanıcı Adını Giriniz"
             class="input-style"
             v-model="username"
           />
@@ -69,6 +69,7 @@ const { handleSubmit, errors, setFieldTouched } = useForm({
   },
 });
 
+
 const { value: password } = useField("password");
 const { value: username } = useField("username");
 
@@ -88,6 +89,13 @@ const submitForm = handleSubmit((item) => {
     });
 });
 
+
+useSeoMeta({
+    ogTitle: () =>"Giriş",
+    title: () =>"Giriş",
+    description: () =>"Kullanıcı Girişi",
+       
+})
 </script>
 
 <style lang="scss" src="./login-card.scss">

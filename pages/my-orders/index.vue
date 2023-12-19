@@ -47,7 +47,12 @@ const breadCrumbLink = ref([
 ]);
 
 
-
+useSeoMeta({
+    ogTitle: () =>"Septim",
+    title: () =>"Septim",
+    description: () =>"Alışveriş sepeti",
+       
+})
 </script>
 
 <style>

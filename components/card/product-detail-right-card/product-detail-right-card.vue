@@ -1,5 +1,5 @@
 <template>
-  <div  class="product-detail-right-card">
+  <div v-if="product" class="product-detail-right-card">
     <span class="border-b-[1px] border-gray-100 pb-2 ">
       <h1 class="font-bold text-3xl mb-1">{{ product.title }}</h1>
       <span class="text-green font-bold text-xl ">{{product.price}}TL</span>

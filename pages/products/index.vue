@@ -134,6 +134,13 @@ const filterCategory = (item) => {
   router.push("/products?category=" + item.category);
 };
 
+
+useSeoMeta({
+    ogTitle: () =>"ürünler",
+    title: () =>"ürünler",
+    description: () =>"Tüm ürünler Burda",
+       
+})
 </script>
 
 <style></style>

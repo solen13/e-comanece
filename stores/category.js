@@ -4,13 +4,14 @@ import { convertCategories } from "@/utils/categoryFiltered"
 export const category = defineStore("category", {
     state: () => ({
         allProducts: [],
-        productDetailsList: null,
+        productDetailsList: {},
         convertedStockCategories: [],
     }),
     actions: {
         async getSelectedProduct({ pageNo = 1, limit = 100 }) {
             try {
                 const response = await axios.get(`https://dummyjson.com/products?limit=${limit}&skip=` + pageNo);
+
                 this.allProducts = response.data.products
 
             } catch (error) {
@@ -19,12 +20,9 @@ export const category = defineStore("category", {
         },
 
         async productDetails(route) {
-
             try {
-
                 const response = await axios.get("https://dummyjson.com/products/" + route);
                 this.productDetailsList = response.data
-                console.log((response))
             } catch (error) {
                 console.error(error);
             }

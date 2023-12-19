@@ -25,7 +25,12 @@
     },
    
   ]);
-  
+  useSeoMeta({
+    ogTitle: () =>"Kullanıcı",
+    title: () =>"kullanıcı",
+    description: () =>"kullanıcı işlemleri",
+       
+})
   </script>
   
   <style>

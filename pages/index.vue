@@ -8,12 +8,11 @@
  
    <special-product/>
    <serial-banner-card class="mt-10 mb-10"/>
-   <p>Page visits: {{ count }}</p>
+  
   </div>
 </template>
 
 <script setup>
-
 import mainPageMetaTag from "~/common/mainPageMetaTag.js";
 const metaTags = mainPageMetaTag();
  useHead(metaTags);
