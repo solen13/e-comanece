@@ -43,7 +43,7 @@
 
 <script setup>
 import { category } from "@/stores/category.js";
-import detailPageMetaTag from "~/common/detailPageMetaTag";
+
 const product = category();
 
 const pageNo = 1;
