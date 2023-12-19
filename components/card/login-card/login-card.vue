@@ -58,8 +58,6 @@ import {
 } from "vee-validate";
 const authStore = useAuthStore();
 
-const emailText = ref("kminchelle");
-const passwordText = ref("0lelplR");
 
 const router = useRouter();
 const { handleSubmit, errors, setFieldTouched } = useForm({
@@ -72,7 +70,9 @@ const { handleSubmit, errors, setFieldTouched } = useForm({
 
 const { value: password } = useField("password");
 const { value: username } = useField("username");
-
+username.value="kminchelle"
+password.value="0lelplR"
+console.log()
 const submitForm = handleSubmit((item) => {
     
   authStore

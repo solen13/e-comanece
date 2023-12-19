@@ -31,7 +31,7 @@ import { useAuthStore } from "@/stores/auth.js";
 const user=useAuthStore()
 
 const userName=computed(()=>{
-   return user.userData.username
+   return user.userData.firstName
 })
 const emit = defineEmits(["clicked","logout"]);
 const logout = () => {
