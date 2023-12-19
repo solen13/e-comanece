@@ -57,6 +57,9 @@ import {
 
 } from "vee-validate";
 const authStore = useAuthStore();
+import { basket } from "@/stores/basket.js";
+const basketStaus = basket();
+
 
 
 const router = useRouter();
@@ -72,14 +75,18 @@ const { value: password } = useField("password");
 const { value: username } = useField("username");
 username.value="kminchelle"
 password.value="0lelplR"
-console.log()
+
 const submitForm = handleSubmit((item) => {
     
   authStore
     .login(item.username, item.password)
     .then((res) => {
       if (res) {
-        router.push("/account/profile");
+        basketStaus.basketSuccess(true);
+        setTimeout(() => {
+            router.push("/account/profile");
+        }, 500);
+  
       } else {
         alert("Böyle Bir Kullanıcı Yok");
       }

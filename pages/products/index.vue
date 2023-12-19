@@ -62,7 +62,7 @@ const breadCrumbLink = ref([
   },
   {
     title: "Ürünler",
-    link: "/",
+    link: "",
   },
 ]);
 const defaultCategory = ref("");

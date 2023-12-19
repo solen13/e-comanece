@@ -17,7 +17,7 @@ const breadCrumbLink = ref([
   },
   {
     title: "Kayıt Ol",
-    link: "/",
+    link: "/register",
   },
 ]);
 

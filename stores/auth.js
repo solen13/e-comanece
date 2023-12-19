@@ -22,15 +22,10 @@ export const useAuthStore = defineStore("useAuthStore", {
                 const tokens = useCookie("token");
                 tokens.value = token
                 this.userData = response
-
-
-
                 const user = useCookie("user");
                 user.value = response
-
-
-
                 return true
+
             } catch (error) {
                 console.error(error);
                 return false
@@ -86,7 +81,7 @@ export const useAuthStore = defineStore("useAuthStore", {
                         'Content-Type': 'application/json'
                     }
                 });
-                console.log('Yanıt:', response);
+
                 return true;
             } catch (error) {
                 console.error('Hata:', error);

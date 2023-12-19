@@ -174,7 +174,8 @@ import {
   useIsFieldTouched,
 } from "vee-validate";
 import { useAuthStore } from "@/stores/auth";
-
+import { basket } from "@/stores/basket.js";
+const basketStaus = basket();
 const authStore = useAuthStore();
 
 const { handleSubmit, errors, setFieldTouched } = useForm({
@@ -211,8 +212,12 @@ const { value: checkbox2 } = useField("checkbox2");
 
 const router = useRouter()
 const submitForm = handleSubmit((item) => {
-  router.push("/login"); 
+  
+basketStaus.basketSuccess(true);
   authStore.register(item)
+  setTimeout(() => {
+    router.push("/login"); 
+  }, 1000);
 
 });
 const  login=()=>{

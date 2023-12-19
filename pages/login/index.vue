@@ -16,7 +16,7 @@ const breadCrumbLink = ref([
   },
   {
     title: "Giriş yap",
-    link: "/",
+    link: "/login",
   },
 ]);
 

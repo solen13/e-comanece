@@ -7,7 +7,7 @@
       <div class="flex">
         <template v-for="(item, index) in breadCrumb">
           <div
-            @click="goToLink(item)"
+            @click="goToLink(item,index)"
             class="font-bold cursor-pointer whitespace-nowrap"
           >
          
@@ -42,8 +42,11 @@ const props = defineProps({
   },
 });
 
-const goToLink = (item) => {
-  router.push(item.link);
+const goToLink = (item,index) => {
+ 
+  if(index !== props.breadCrumb.length -1){
+    router.push(item.link);
+  }
 };
 </script>
 

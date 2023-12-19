@@ -21,7 +21,7 @@
     },
     {
       title: "Profil Bilgilerim",
-      link: "/",
+      link: "/account/profile",
     },
    
   ]);
