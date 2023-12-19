@@ -33,9 +33,11 @@ export const useAuthStore = defineStore("useAuthStore", {
 
 
         },
+
         async checkUser(userInfo) {
             this.userData = userInfo
         },
+
         async register(userInfo) {
 
             axios.post('https://dummyjson.com/users/add', {
@@ -63,6 +65,7 @@ export const useAuthStore = defineStore("useAuthStore", {
                     console.error('Hata oluştu:', error);
                 });
         },
+
         async logout() {
             const router = useRouter()
             const user = useCookie("user")
@@ -89,5 +92,6 @@ export const useAuthStore = defineStore("useAuthStore", {
             }
 
         }
+
     },
 });

@@ -21,10 +21,11 @@ export const basket = defineStore("basket", {
             }
 
         },
-        async removeItme(index) {
 
+        async removeItme(index) {
             this.basketItmes.splice(index, 1);
         },
+
         async increaseItemQuantity(index, product) {
             if (index != null) {
 
@@ -40,6 +41,7 @@ export const basket = defineStore("basket", {
                 }
             }
         },
+
         async decreaseItemQuantity(index, product) {
             if (index !== null) {
                 // sepet içi
@@ -64,9 +66,11 @@ export const basket = defineStore("basket", {
 
 
         },
+
         async removeBasketList() {
             this.basketItmes = []
         },
+
         basketSuccess(status) {
             this.isBasketSuccess = status
         }
