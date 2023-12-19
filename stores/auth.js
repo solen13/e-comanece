@@ -49,8 +49,7 @@ export const useAuthStore = defineStore("useAuthStore", {
                 lastName: userInfo.surname,
                 email: userInfo.email,
                 addressTitle: userInfo.addressTitle,
-                tc: userInfo.phoneNumber,
-                id: 666,
+                id: userInfo.phoneNumber,
                 password: userInfo.password,
                 addresss: {
                     city: `${userInfo.city}-${userInfo.district}`,
@@ -77,6 +76,23 @@ export const useAuthStore = defineStore("useAuthStore", {
             user.value = null
             this.userData = {}
             router.push("/")
+        },
+
+        async repetLogin(tokenVal) {
+            try {
+                const response = await axios.get('https://dummyjson.com/auth', {
+                    headers: {
+                        'Authorization': `Bearer ${tokenVal}`, // Bearer token'ı Authorization başlığına ekle
+                        'Content-Type': 'application/json'
+                    }
+                });
+                console.log('Yanıt:', response);
+                return true;
+            } catch (error) {
+                console.error('Hata:', error);
+                return false;
+            }
+
         }
     },
 });

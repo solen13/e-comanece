@@ -1,5 +1,5 @@
 <template>
-  <div v-if="product" class="w-1/2">
+  <div v-if="product" class="w-1/2  h-[650px]">
 
     <swiper
     :style="{
@@ -13,7 +13,7 @@
     :navigation="true"
     :thumbs="{ swiper: thumbsSwiper }"
     :modules="modules"
-    class="mySwiper2  rounded-lg "
+    class="mySwiper2 rounded-lg "
   >
     <swiper-slide v-for="item in product.images" 
       ><img 

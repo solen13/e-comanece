@@ -65,7 +65,7 @@
             <input
               v-model="password"
               name="password"
-              type="text"
+              type="password"
               class="input-style"
               placeholder="Parolanız"
             />
@@ -79,7 +79,7 @@
             <input
               v-model="passwordConfirmation"
               name="passwordConfirmation"
-              type="text"
+              type="password"
               class="input-style"
               placeholder="Parolanız (Tekrar)"
               data-vv-as="password"

@@ -3,7 +3,7 @@
     <bread-crumb :breadCrumb="breadCrumbLink" :title="breadCrumbTitle" />
 
     <div class="container mx-auto">
-      <order-panel :categoryName="selectedCategory"  :categoryLength="limit"/>
+      <order-panel :categoryName="selectedCategory" :categoryLength="limit" />
       <div class="flex justify-center mt-5">
         <category-filter-card
           :category="stockCategories"
@@ -15,13 +15,13 @@
             <div v-for="item in productList" :key="item.id">
               <product-card :product="item" />
             </div>
-              <div v-if="productList.length===0">
-               <div class="flex flex-wrap gap-5 bg- justify-start" >
-                <skeleton-product-card v-for="item in 6" :key="item"/>
-               </div>
+            <div v-if="productList.length === 0">
+              <div class="flex flex-wrap gap-5 bg- justify-start">
+                <skeleton-product-card v-for="item in 6" :key="item" />
               </div>
+            </div>
           </div>
-        
+
           <div class="flex justify-center">
             <pagination
               @clicked="getPageItems"
@@ -40,12 +40,10 @@
 import { ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { category } from "@/stores/category.js";
-import categoryPageMetaTag from "~/common/categoryPageMetaTag.js";
 
 const product = category();
 const maxShowCountPerPage = 6;
 
- const metaTag=ref({})
 const breadCrumbTitle = ref("ürünler");
 const router = useRouter();
 const route = useRoute();
@@ -77,8 +75,8 @@ const selectedCategory = computed(() => {
     return product.convertedStockCategories.find(
       (item) => item.category === categoryQuery.value
     );
-  }else{
-    return product.convertedStockCategories[0]
+  } else {
+    return product.convertedStockCategories[0];
   }
 });
 
@@ -89,8 +87,6 @@ const getProductCategory = (query) => {
     productList.value = product.allProducts.slice(0, maxShowCountPerPage);
 
     limit.value = product.allProducts.length;
-metaTag.value=categoryPageMetaTag(productList.value[0])
-
   });
   defaultCategory.value = query;
 };
@@ -111,6 +107,7 @@ watch(
   () => categoryQuery.value,
   (query) => {
     getProductCategory(query);
+  
   }
 );
 
@@ -122,36 +119,20 @@ onMounted(async () => {
     setTimeout(() => {
       getPageItems(parseInt(pageNumberQuery));
     }, 500);
-  } 
+  }
 });
 
 const getPageItems = (pageNumber) => {
-
   const startIndex = (pageNumber - 1) * maxShowCountPerPage;
   const endIndex = startIndex + maxShowCountPerPage;
   productList.value = product.allProducts.slice(startIndex, endIndex);
- 
+
   router.push("/products?page=" + pageNumber);
 };
 
 const filterCategory = (item) => {
   router.push("/products?category=" + item.category);
 };
-console.log(metaTag.value)
-
-
-useServerSeoMeta({
-    ogTitle: () => metaTag.value.title,
-    title: () => metaTag.value.title,
-    description: () => "productDetails.description",
-    ogDescription: () => "productDetails.description",
-    ogImage: () => "productDetails.thumbnail",
-    ogImageUrl: () => "productDetails.thumbnail",
-    twitterCard: () => 'summary_large_image',
-    twitterTitle: () => "title",
-    twitterDescription: () => "productDetails.description",
-    twitterImage: () =>" productDetails.thumbnail"
-  })
 
 </script>
 

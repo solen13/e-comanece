@@ -61,8 +61,10 @@
       <button class="bg-darkGreen text-white-100 w-full py-2 rounded-lg">
         Ödemeye Geç
       </button>
-      <button
+      <button 
+       :disabled="!total"
         @click="removeList"
+        
         class="bg-textRed text-white-100 w-full py-2 rounded-lg mt-2"
       >
         sepeti sil
@@ -100,8 +102,8 @@ const isDiscountActiveBtn = () => {
 
 const removeList = () => {
     product.removeBasketList()
+    product.basketSuccess(true);
     router.push("/")
-    product.basketSuccess(false);
 };
 </script>
 

@@ -2,7 +2,7 @@
 <template>
   <div class="login-card">
     <h1 class="text-center mt-2 font-bold text-xl mb-8">Giriş Yap</h1>
-    <form class="register-card" @submit.prevent="submitForm">
+    <form  @submit.prevent="submitForm">
       <div class="flex flex-col w-[392px] mx-auto">
         <span class="flex flex-col">
           <label class="font-bold"> E-posta Adresi </label>
@@ -64,7 +64,7 @@ const passwordText = ref("0lelplR");
 const router = useRouter();
 const { handleSubmit, errors, setFieldTouched } = useForm({
   validationSchema: {
-    username: "required|alpha_spaces",
+    username: "required",
     password: "required",
   },
 });
@@ -73,8 +73,9 @@ const { value: password } = useField("password");
 const { value: username } = useField("username");
 
 const submitForm = handleSubmit((item) => {
+    
   authStore
-    .login(item.username, item.username)
+    .login(item.username, item.password)
     .then((res) => {
       if (res) {
         router.push("/account/profile");

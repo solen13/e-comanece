@@ -6,7 +6,7 @@
       :title="productDetail.title"
     />
 
-    <div class="container mx-auto mt-16 ">
+    <div class="container mx-auto mt-5 ">
       <div class="flex ">
         <product-slider :product="productDetail" />
         <div class="w-1/2 ml-6">
@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <div class="mt-[50px]">
+      <div class="mt-5">
         <div class="flex justify-between">
           <special-product title="Diğer Ürünler"/>
         </div>
@@ -45,10 +45,7 @@ const pageNo=1
 const limit=4
 
 product.getSelectedProduct(pageNo,limit)
- const productSpecial=computed(()=>{
 
-   return product.allProducts.slice(4, 8)
- })
 
 onMounted(() => {
   const route = useRoute();
@@ -78,6 +75,25 @@ const breadCrumbLink = computed(() => {
   ];
   return api;
 });
+
+//seo
+const route = useRoute();
+const url = route.params.detail; 
+const productDetails = await fetch(`https://dummyjson.com/products/${url}`).then(res => res.json()).then(data => data);
+const title = `${productDetails.title} | ${productDetails.description}`;
+
+  useServerSeoMeta({
+    ogTitle: () => title,
+    title: () => productDetails.title,
+    description: () => productDetails.description,
+    ogDescription: () => productDetails.description,
+    ogImage: () => productDetails.thumbnail,
+    ogImageUrl: () => productDetails.thumbnail,
+    twitterCard: () => 'summary_large_image',
+    twitterTitle: () => title,
+    twitterDescription: () => productDetails.description,
+    twitterImage: () => productDetails.thumbnail
+  })
 </script>
 
 <style>

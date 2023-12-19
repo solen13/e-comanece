@@ -8,15 +8,15 @@ export default defineNuxtPlugin((nuxtApp) => {
     const authStore = useAuthStore()
     const tokenVal = token._rawValue
     if (tokenVal) {
-
         const user = useCookie("user")
-
-        authStore.checkUser(user.value)
-
-
+        authStore.repetLogin(tokenVal).then(res => {
+            if (res) {
+                authStore.checkUser(user.value)
+            } else {
+                token.value = null
+            }
+        })
     } else {
         token.value = null
-
-
     }
 })
